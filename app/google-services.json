@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "47292808463",
+    "firebase_url": "https://tugasakhir-66439.firebaseio.com",
+    "project_id": "tugasakhir-66439",
+    "storage_bucket": "tugasakhir-66439.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:47292808463:android:7a8d920134c9218c20d27a",
+        "android_client_info": {
+          "package_name": "com.zackyasgar.at_tauba"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "47292808463-1a43qdpqpqk4ha1f459mug0mss8euk1v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSf5NpfpPE3wKlTewoIEMhYc4sQ_fryl4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "47292808463-1a43qdpqpqk4ha1f459mug0mss8euk1v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
