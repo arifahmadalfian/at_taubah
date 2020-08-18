@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="@drawable/bg_home"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical">
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="190dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/bg_jadwalsolat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_waktu_sholat"
+            style="@style/StyleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="12dp"
+            android:textSize="16sp"
+            android:text="@string/waktu_sholat"
+            app:layout_constraintBottom_toTopOf="@id/img_imsak"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/img_imsak"
+            style="@style/SizeJam"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/ic_jam_imsak"
+            app:layout_constraintBottom_toTopOf="@+id/tv_imsak"
+            app:layout_constraintEnd_toStartOf="@id/img_subuh"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_waktu_sholat"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tv_imsak"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="@string/imsak"
+            style="@style/TextJam"
+            app:layout_constraintBottom_toTopOf="@+id/tv_waktu_imsak"
+            app:layout_constraintEnd_toStartOf="@id/tv_subuh"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_imsak" />
+
+        <TextView
+            android:id="@+id/tv_waktu_imsak"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            style="@style/TextJam"
+            android:text="@string/_00_00"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/img_ashar"
+            app:layout_constraintTop_toBottomOf="@+id/tv_imsak"
+            app:layout_constraintEnd_toStartOf="@id/tv_waktu_subuh"/>
+
+        <ImageView
+            android:id="@+id/img_subuh"
+            style="@style/SizeJam"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/ic_jam_shubuh"
+            app:layout_constraintBottom_toTopOf="@+id/tv_imsak"
+            app:layout_constraintEnd_toStartOf="@id/img_dzuhur"
+            app:layout_constraintStart_toEndOf="@+id/img_imsak"
+            app:layout_constraintTop_toBottomOf="@id/tv_waktu_sholat"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tv_subuh"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="@string/subuh"
+            style="@style/TextJam"
+            app:layout_constraintBottom_toTopOf="@+id/tv_waktu_subuh"
+            app:layout_constraintStart_toEndOf="@id/tv_imsak"
+            app:layout_constraintTop_toBottomOf="@+id/img_imsak"
+            app:layout_constraintEnd_toStartOf="@id/tv_dzuhur"/>
+
+        <TextView
+            android:id="@+id/tv_waktu_subuh"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="@string/_00_00"
+            style="@style/TextJam"
+            app:layout_constraintEnd_toStartOf="@id/tv_waktu_dzuhur"
+            app:layout_constraintStart_toEndOf="@id/tv_waktu_imsak"
+            app:layout_constraintBottom_toTopOf="@id/img_magrib"
+            app:layout_constraintTop_toBottomOf="@+id/tv_subuh" />
+
+        <ImageView
+            android:id="@+id/img_dzuhur"
+            style="@style/SizeJam"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/ic_jam_dzuhur"
+            app:layout_constraintBottom_toTopOf="@+id/tv_dzuhur"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/img_subuh"
+            app:layout_constraintTop_toBottomOf="@id/tv_waktu_sholat"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tv_dzuhur"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="@string/dzuhur"
+            style="@style/TextJam"
+            app:layout_constraintBottom_toTopOf="@+id/tv_waktu_subuh"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_subuh"
+            app:layout_constraintTop_toBottomOf="@+id/img_dzuhur" />
+
+        <TextView
+            android:id="@+id/tv_waktu_dzuhur"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="@string/_00_00"
+            style="@style/TextJam"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/img_isya"
+            app:layout_constraintStart_toEndOf="@id/tv_waktu_subuh"
+            app:layout_constraintTop_toBottomOf="@+id/tv_dzuhur" />
+
+        <ImageView
+            android:id="@+id/img_ashar"
+            style="@style/SizeJam"
+            android:layout_marginTop="12dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_jam_ashar"
+            app:layout_constraintBottom_toTopOf="@id/tv_ashar"
+            app:layout_constraintEnd_toStartOf="@id/img_magrib"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_waktu_imsak"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tv_ashar"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            style="@style/TextJam"
+            android:text="@string/ashar"
+            app:layout_constraintBottom_toTopOf="@+id/tv_waktu_ashar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_ashar"
+            app:layout_constraintEnd_toStartOf="@id/tv_magrib"/>
+
+        <TextView
+            android:id="@+id/tv_waktu_ashar"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:text="@string/_00_00"
+            style="@style/TextJam"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_waktu_magrib"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_ashar" />
+
+        <ImageView
+            android:id="@+id/img_magrib"
+            style="@style/SizeJam"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/ic_jam_maghrib"
+            app:layout_constraintBottom_toTopOf="@+id/tv_magrib"
+            app:layout_constraintEnd_toStartOf="@id/img_isya"
+            app:layout_constraintStart_toEndOf="@+id/img_ashar"
+            app:layout_constraintTop_toBottomOf="@id/tv_waktu_subuh"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tv_magrib"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="@string/magrib"
+            style="@style/TextJam"
+            app:layout_constraintBottom_toTopOf="@+id/tv_waktu_magrib"
+            app:layout_constraintStart_toEndOf="@id/tv_ashar"
+            app:layout_constraintTop_toBottomOf="@+id/img_magrib"
+            app:layout_constraintEnd_toStartOf="@id/tv_isya"/>
+
+        <TextView
+            android:id="@+id/tv_waktu_magrib"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            style="@style/TextJam"
+            android:text="@string/_00_00"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_waktu_isya"
+            app:layout_constraintStart_toEndOf="@id/tv_waktu_ashar"
+            app:layout_constraintTop_toBottomOf="@+id/tv_magrib" />
+
+        <ImageView
+            android:id="@+id/img_isya"
+            style="@style/SizeJam"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/ic_jam_isha"
+            app:layout_constraintBottom_toTopOf="@+id/tv_isya"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/img_magrib"
+            app:layout_constraintTop_toBottomOf="@id/tv_waktu_dzuhur"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tv_isya"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="@string/isya"
+            style="@style/TextJam"
+            app:layout_constraintBottom_toTopOf="@+id/tv_waktu_isya"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_magrib"
+            app:layout_constraintTop_toBottomOf="@+id/img_isya" />
+
+        <TextView
+            android:id="@+id/tv_waktu_isya"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:text="@string/_00_00"
+            style="@style/TextJam"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_waktu_magrib"
+            app:layout_constraintTop_toBottomOf="@+id/tv_isya" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

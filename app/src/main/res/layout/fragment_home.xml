@@ -4,19 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     tools:context=".ui.home.HomeFragment">
 
     <TextView
-        android:id="@+id/text_home"
+        android:id="@+id/tv_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="?attr/actionBarSize"
+        android:text="@string/bandung"
+        style="@style/StyleText"
+        android:paddingStart="16dp"
+        android:gravity="center_vertical"
+        android:textSize="21sp"
+        android:textColor="@color/colorWhite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/scrollView2"
+        android:background="@drawable/bg_home_toolbar"
+        tools:ignore="RtlSymmetry" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="?attr/actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_toolbar"
+        tools:ignore="ScrollViewCount">
+
+        <include layout="@layout/layout_home"/>
+
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout >
