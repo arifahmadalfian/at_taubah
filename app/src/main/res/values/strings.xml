@@ -19,5 +19,10 @@
     <string name="masjid_at_taubah">Masjid At-Taubah Palem Permai</string>
     <string name="tentang_mesjid">Masjid (bentuk tidak baku: mesjid) adalah rumah tempat ibadah umat Islam atau Muslim. Masjid artinya tempat sujud, sebutan lain yang berkaitan dengan masjid di Indonesia adalah musala, langgar atau surau. Istilah tersebut diperuntukkan bagi bangunan menyerupai masjid yang tidak digunakan untuk salat Jumat, iktikaf, dan umumnya berukuran kecil. Selain digunakan sebagai tempat ibadah, masjid juga merupakan pusat kehidupan komunitas muslim. Kegiatan-kegiatan perayaan hari besar, diskusi, kajian agama, ceramah dan belajar Al-Quran sering dilaksanakan di Masjid. Bahkan dalam sejarah Islam, masjid turut memegang peranan dalam aktivitas sosial kemasyarakatan hingga kemiliteran.</string>
     <string name="admin">Admin</string>
+    <string name="fragment_notifikasi">Fragment Notifikasi</string>
+    <string name="notifikasi">Notifikasi</string>
+    <string name="juma_at">Juma\'at</string>
+    <string name="kegiatan">Kegiatan</string>
+    <string name="pengajian">Pengajian</string>
 
 </resources>

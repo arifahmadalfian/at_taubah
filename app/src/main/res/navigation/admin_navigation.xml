@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/admin_navigation.xml"
+    app:startDestination="@id/navigation_admin_pengajian"
+    tools:ignore="UnusedNavigation">
+
+    <fragment
+        android:id="@+id/navigation_admin_pengajian"
+        android:name="com.zackyasgar.at_tauba.admin.DataPengajianFragment"
+        android:label="fragment_data_pengajian"
+        tools:layout="@layout/fragment_data_pengajian" />
+    <fragment
+        android:id="@+id/navigation_admin_jumat"
+        android:name="com.zackyasgar.at_tauba.admin.DataJumatFragment"
+        android:label="fragment_data_jumat"
+        tools:layout="@layout/fragment_data_jumat" />
+    <fragment
+        android:id="@+id/navigation_admin_kegiatan"
+        android:name="com.zackyasgar.at_tauba.admin.DataKegiatanFragment"
+        android:label="fragment_data_kegiatan"
+        tools:layout="@layout/fragment_data_kegiatan" />
+    <fragment
+        android:id="@+id/navigation_admin_notifikasi"
+        android:name="com.zackyasgar.at_tauba.admin.DataNotifikasiFragment"
+        android:label="fragment_data_notifikasi"
+        tools:layout="@layout/fragment_data_notifikasi" />
+</navigation>

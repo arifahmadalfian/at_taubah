@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         //setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
+        //untuk messeg popUp pada aplikasi ketika aplikasi sedang di buka
         getMessageAlert()
 
     }
@@ -45,7 +46,7 @@ class MainActivity : AppCompatActivity() {
 
         if (!message.isNullOrEmpty()){
             AlertDialog.Builder(this)
-                .setTitle("Pesan baru")
+                .setTitle("Notivikasi baru")
                 .setMessage(message)
                 .setPositiveButton("Ok", DialogInterface.OnClickListener{ _, _ ->  }).show()
         }

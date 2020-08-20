@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_admin_pengajian"
+        android:icon="@drawable/ic_mejid"
+        android:title="@string/pengajian"/>
+
+    <item
+        android:id="@+id/navigation_admin_jumat"
+        android:icon="@drawable/ic_mejid"
+        android:title="@string/juma_at" />
+
+    <item
+        android:id="@+id/navigation_admin_kegiatan"
+        android:icon="@drawable/ic_mejid"
+        android:title="@string/kegiatan"/>
+
+    <item
+        android:id="@+id/navigation_admin_notifikasi"
+        android:icon="@drawable/ic_mejid"
+        android:title="@string/notifikasi"/>
+</menu>
