@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     tools:context=".ui.masjid.MasjidFragment">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -18,11 +19,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fitsSystemWindows="true"
+            app:collapsedTitleTextAppearance="@style/StyleText"
             app:contentScrim="@color/colorPrimary"
-            app:expandedTitleMarginStart="15dp"
             app:expandedTitleMarginBottom="25dp"
-            app:title="@string/title_masjid"
-            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
+            app:expandedTitleMarginStart="15dp"
+            app:expandedTitleTextAppearance="@style/StyleText"
+            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
+            app:title="@string/title_masjid">
 
             <ImageView
                 android:layout_width="match_parent"
@@ -54,11 +57,16 @@
         android:layout_marginBottom="?attr/actionBarSize"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/contoh_text"
-            android:textSize="25sp" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            tools:ignore="UselessLeaf">
+
+
+
+        </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
 
