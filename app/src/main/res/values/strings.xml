@@ -6,13 +6,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="fragment_about">Ini Adalah Fragment masjid</string>
     <string name="title_masjid">At-Taubah</string>
-    <string name="contoh_text">Di Google I/O kemarin, Google kini telah memberikan dukungan penuh untuk bahasa pemrograman Kotlin. Android Studio 3.0 yang akan segera diluncurkan dalam waktu dekat nantinya akan langsung mendukung bahasa pemrograman Kotlin.
 
-Mungkin bagi sebagian developer aplikasi Android sudah tahu tentang Kotlin. Nah bagi yang belum tahu apa itu Kotlin sederhananya Kotlin adalah bahasa pemrograman yang merupakan “penyempurnaan” dari bahasa pemrograman Java untuk pengembangan aplikasi Android.
-
-Kotlin awalnya dikembangkan oleh JetBrains, perusahaan dibalik IntelliJ IDEA. Setelah melalui banyak perkembangan, JetBrains merilis Kotlin secara open source dan kini setelah perkembangannya semakin maju, Google mendukung penuh Kotlin untuk pengembangan aplikasi Android.
-
-Developer tidak perlu khawatir proyek Android-nya yang menggunakan Java akan menjadi tidak bisa digunakan ketik ketika menggunakan Kotlin karena Java dan Kotlin bisa digunakan berbarengan. Dan karena Kotlin mirip dengan Java, developer akan dapat dengan mudah bahasa pemrograman Kotlin.</string>
     <string name="imsak">Imsak</string>
     <string name="subuh">Subuh</string>
     <string name="dzuhur">Dzuhur</string>
@@ -22,5 +16,8 @@ Developer tidak perlu khawatir proyek Android-nya yang menggunakan Java akan men
     <string name="isya">Isya</string>
     <string name="waktu_sholat">Waktu Sholat</string>
     <string name="bandung">Bandung</string>
+    <string name="masjid_at_taubah">Masjid At-Taubah Palem Permai</string>
+    <string name="tentang_mesjid">Masjid (bentuk tidak baku: mesjid) adalah rumah tempat ibadah umat Islam atau Muslim. Masjid artinya tempat sujud, sebutan lain yang berkaitan dengan masjid di Indonesia adalah musala, langgar atau surau. Istilah tersebut diperuntukkan bagi bangunan menyerupai masjid yang tidak digunakan untuk salat Jumat, iktikaf, dan umumnya berukuran kecil. Selain digunakan sebagai tempat ibadah, masjid juga merupakan pusat kehidupan komunitas muslim. Kegiatan-kegiatan perayaan hari besar, diskusi, kajian agama, ceramah dan belajar Al-Quran sering dilaksanakan di Masjid. Bahkan dalam sejarah Islam, masjid turut memegang peranan dalam aktivitas sosial kemasyarakatan hingga kemiliteran.</string>
+    <string name="admin">Admin</string>
 
 </resources>

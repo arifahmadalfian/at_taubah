@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
-    android:backgroundTint="#FFFFFF"
     android:backgroundTintMode="screen"
     tools:context=".ui.masjid.MasjidFragment">
 
@@ -65,11 +64,43 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="?attr/actionBarSize"
+        android:layout_height="wrap_content"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colorBackground"
+            android:padding="16dp">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/masjid_at_taubah"
+                style="@style/StyleText"
+                android:layout_marginBottom="16dp"
+                android:textStyle="bold"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tentang_mesjid"
+                style="@style/StyleText"
+                android:textSize="20sp"
+                android:layout_marginBottom="16dp"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/admin"
+                style="@style/StyleText"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:backgroundTint="@color/colorAccent"/>
+
+        </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
 
