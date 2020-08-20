@@ -7,6 +7,13 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.Admin" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkB</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
     <style name="SizeJam" parent="AppTheme">
         <item name="android:layout_width">50dp</item>
         <item name="android:layout_height">50dp</item>

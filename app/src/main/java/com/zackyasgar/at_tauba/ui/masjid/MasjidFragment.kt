@@ -14,6 +14,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.zackyasgar.at_tauba.R
+import com.zackyasgar.at_tauba.admin.AdminActivity
 import kotlinx.android.synthetic.main.fragment_masjid.*
 import android.content.Intent.getIntent as intentGetIntent
 
@@ -33,14 +34,17 @@ class MasjidFragment : Fragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
 
         btn_fab_maps.setOnClickListener(this)
+        btn_admin.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btn_fab_maps -> getGoogleMaps()
+            R.id.btn_admin -> getHalamanAdmin()
         }
     }
 
+    // berpindah ke google maps
     private fun getGoogleMaps() {
         val gDestination = "-6.937810,107.655653"
         try {
@@ -54,6 +58,12 @@ class MasjidFragment : Fragment(), View.OnClickListener {
             val intent = Intent(ACTION_VIEW, uri)
             startActivity(intent)
         }
+    }
+
+    // pindah ke activity baru
+    private fun getHalamanAdmin() {
+        val intent = Intent(activity, AdminActivity::class.java)
+        startActivity(intent)
     }
 
 }

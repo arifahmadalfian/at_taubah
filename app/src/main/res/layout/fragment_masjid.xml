@@ -92,13 +92,14 @@
                 android:layout_marginBottom="16dp"/>
 
             <Button
+                android:id="@+id/btn_admin"
+                style="@style/StyleText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorAccent"
                 android:text="@string/admin"
-                style="@style/StyleText"
-                android:textStyle="bold"
                 android:textSize="25sp"
-                android:backgroundTint="@color/colorAccent"/>
+                android:textStyle="bold" />
 
         </LinearLayout>
 

@@ -3,6 +3,11 @@
     <string name="title_home">Home</string>
     <string name="title_notifications">Notifications</string>
 
+    <string name="title_data_pengajian">Data Pengajian</string>
+    <string name="title_data_jumatan">Data Jumat</string>
+    <string name="title_data_kegiatan">Data Kegiatan</string>
+    <string name="title_data_notifikasi">Data Notifikasi</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="fragment_about">Ini Adalah Fragment masjid</string>
     <string name="title_masjid">At-Taubah</string>
