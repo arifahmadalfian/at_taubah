@@ -29,5 +29,11 @@
     <string name="juma_at">Juma\'at</string>
     <string name="kegiatan">Kegiatan</string>
     <string name="pengajian">Pengajian</string>
+    <string name="judul_pengajian">Judul Pengajian</string>
+    <string name="tema_pengajian">Tema Pengajian</string>
+    <string name="tambah_data">Tambah Data</string>
+    <string name="waktu_pengajian">Waktu Pengajian</string>
+    <string name="tanggal_pengajian">Tanggal Pengajian</string>
+    <string name="isi_pengajian">Isi Pengajian</string>
 
 </resources>

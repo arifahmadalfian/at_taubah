@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#2D717E</color>
     <color name="colorPrimaryDark">#2D717E</color>
-    <color name="colorPrimaryDarkB">#378897</color>
+    <color name="colorPrimaryDarkB">#46378897</color>
     <color name="colorAccent">#f38a46</color>
     <color name="colorTextUtama">#2b2b2b</color>
     <color name="colorTextAccent">#aaaaaa</color>
@@ -10,5 +10,8 @@
 
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorDarkSemiTransparent">#C6000000</color>
+
+    <color name="textInputLayout">#040404</color>
+    <color name="textLayout">#8D040404</color>
 
 </resources>
