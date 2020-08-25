@@ -39,7 +39,6 @@ class DataPengajianFragment : Fragment(), View.OnClickListener{
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btn_tgl -> {
-                //materialDatePicker.show(childFragmentManager, TANGGAL_TAG)
                 val calendar = Calendar.getInstance()
                 val c_year = calendar.get(Calendar.YEAR)
                 val c_month = calendar.get(Calendar.MONTH)
@@ -59,7 +58,6 @@ class DataPengajianFragment : Fragment(), View.OnClickListener{
 
                 timePickerDialog = TimePickerDialog(
                     context as Context, OnTimeSetListener { _, hourOfDay, minute ->
-
                         tv_jam.text = ("$hourOfDay:$minute")
                     },
                     // calender pertamakali di buka
@@ -71,7 +69,6 @@ class DataPengajianFragment : Fragment(), View.OnClickListener{
                 timePickerDialog?.show()
             }
         }
-
     }
 
 }

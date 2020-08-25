@@ -29,10 +29,9 @@
             android:drawablePadding="16dp"
             android:fontFamily="@font/roboto"
             android:hint="@string/tema_pengajian"
-            android:inputType="textEmailAddress"
             android:maxLines="1"
             android:textColor="#070707"
-            android:textSize="20sp" />
+            tools:ignore="TextFields" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -57,10 +56,9 @@
             android:drawablePadding="16dp"
             android:fontFamily="@font/roboto"
             android:hint="@string/judul_pengajian"
-            android:inputType="textPassword"
             android:maxLines="1"
             android:textColor="#070707"
-            android:textSize="20sp" />
+            tools:ignore="TextFields" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
@@ -90,8 +88,9 @@
             android:id="@+id/tv_tgl"
             style="@style/StyleText"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginStart="6dp"
+            android:gravity="center_vertical"
             android:text="@string/tanggal_pengajian" />
 
     </LinearLayout>
@@ -122,9 +121,10 @@
         <TextView
             android:id="@+id/tv_jam"
             style="@style/StyleText"
-            android:layout_marginStart="6dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="6dp"
+            android:gravity="center_vertical"
             android:text="@string/waktu_pengajian" />
 
     </LinearLayout>
@@ -151,10 +151,9 @@
             android:drawablePadding="16dp"
             android:fontFamily="@font/roboto"
             android:hint="@string/isi_pengajian"
-            android:inputType="textPassword"
             android:maxLines="1"
             android:textColor="#070707"
-            android:textSize="20sp" />
+            android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
@@ -173,13 +172,14 @@
         <Button
             android:id="@+id/btn_login_login"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:backgroundTint="@color/colorAccent"
             android:fontFamily="@font/roboto"
             android:text="@string/tambah_data"
             android:textAllCaps="false"
             android:textColor="@color/colorWhite"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textSize="18sp"/>
 
     </LinearLayout>
 
