@@ -16,7 +16,7 @@
         android:title="@string/kegiatan"/>
 
     <item
-        android:id="@+id/navigation_admin_notifikasi"
+        android:id="@+id/navigation_admin_pengurus"
         android:icon="@drawable/ic_mejid"
-        android:title="@string/notifikasi"/>
+        android:title="@string/pengurus"/>
 </menu>

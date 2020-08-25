@@ -93,7 +93,7 @@ class MyFirebaseMessagingService() : FirebaseMessagingService() {
             notificationManager.createNotificationChannel(notificationChannel)
             notificationManager.notify(NOTIFICATION_ID, notification)
         } else {
-            notification = NotificationCompat.Builder(context)
+            notification = NotificationCompat.Builder(context )
                 .setSmallIcon(getNotificationIcon())
                 .setAutoCancel(true)
                 .setContentText(message)

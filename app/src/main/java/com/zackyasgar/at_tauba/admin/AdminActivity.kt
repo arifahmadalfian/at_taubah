@@ -21,10 +21,12 @@ class AdminActivity : AppCompatActivity() {
         // id dari fragment yang menjadi Navigasi Host atau fragment kontainer di activity admin
         val navControlerAdmin = findNavController(R.id.nav_host_admin_fragment)
 
-        //mengubah title saat fragment berpindah
+        /* mengubah title saat fragment berpindah
         val appBarConfigurationTitle = AppBarConfiguration(setOf(
             R.id.navigation_admin_pengajian, R.id.navigation_admin_jumat, R.id.navigation_admin_kegiatan, R.id.navigation_admin_notifikasi))
         setupActionBarWithNavController(navControlerAdmin,appBarConfigurationTitle)
+
+         */
 
         //ini berfungsi ketika icon dari BottomNavigationView di klik maka fragment secara otomatis berpindah
         navViewAdmin.setupWithNavController(navControlerAdmin)

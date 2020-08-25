@@ -5,15 +5,16 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorBackground"
-    tools:context=".admin.DataJumatFragment">
+    tools:context=".admin.DataPengurusFragment">
 
     <ImageView
-        android:id="@+id/img_jumat"
+        android:id="@+id/img_pengurus"
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:layout_gravity="center"
-        android:scaleType="centerCrop"
-        android:src="@drawable/jumat"
+        android:background="@color/colorPrimary"
+        android:scaleType="centerInside"
+        android:src="@drawable/dkm"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -32,16 +33,16 @@
         app:layout_constraintBottom_toTopOf="@+id/textInputLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/img_jumat">
+        app:layout_constraintTop_toBottomOf="@id/img_pengurus">
 
         <EditText
-            android:id="@+id/et_jumat_imam"
+            android:id="@+id/et_pengurus_nama"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:autofillHints="@string/khatib_imam"
+            android:autofillHints="@string/nama_pengurus"
             android:drawablePadding="16dp"
             android:fontFamily="@font/roboto"
-            android:hint="@string/khatib_imam"
+            android:hint="@string/nama_pengurus"
             android:maxLines="1"
             android:textColor="#070707"
             tools:ignore="TextFields" />
@@ -56,91 +57,23 @@
         android:layout_marginEnd="16dp"
         android:textColorHint="@color/textLayout"
         android:theme="@style/EditScreenTextInputLayoutStyle"
-        app:layout_constraintBottom_toTopOf="@+id/ll_tgl"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textInputLayout">
 
         <EditText
-            android:id="@+id/et_jumat_muadzin"
+            android:id="@+id/et_pengurus_jabatan"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:autofillHints="@string/muadzin"
             android:drawablePadding="16dp"
             android:fontFamily="@font/roboto"
-            android:hint="@string/muadzin"
+            android:hint="@string/jabatan_pengurus"
             android:maxLines="1"
             android:textColor="#070707"
             tools:ignore="TextFields" />
     </com.google.android.material.textfield.TextInputLayout>
-
-    <LinearLayout
-        android:id="@+id/ll_tgl"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/ll_jam"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
-
-        <ImageButton
-            android:id="@+id/btn_jumat_tgl"
-            style="@style/Base.Widget.Appcompat.ImageButton"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:backgroundTint="@color/colorPrimary"
-            android:src="@drawable/ic_baseline_insert_invitation_24"
-            tools:ignore="ContentDescription" />
-
-        <TextView
-            android:id="@+id/tv_tgl"
-            style="@style/StyleText"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="6dp"
-            android:gravity="center_vertical"
-            android:text="@string/tanggal_jumatan" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/ll_jam"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayout3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ll_tgl">
-
-        <ImageButton
-            android:id="@+id/btn_jumat_jam"
-            style="@style/Base.Widget.Appcompat.ImageButton"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:backgroundTint="@color/colorPrimary"
-            android:src="@drawable/ic_baseline_access_time_24"
-            tools:ignore="ContentDescription" />
-
-        <TextView
-            android:id="@+id/tv_jumat_jam"
-            style="@style/StyleText"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="6dp"
-            android:gravity="center_vertical"
-            android:text="@string/waktu_jumat" />
-
-    </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout3"
@@ -155,16 +88,16 @@
         app:layout_constraintBottom_toTopOf="@+id/ll_tambah"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ll_jam">
+        app:layout_constraintTop_toBottomOf="@id/textInputLayout2">
 
         <EditText
             android:id="@+id/et_jumat_isi_khutbah"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:autofillHints="@string/isi_pengajian"
+            android:autofillHints="@string/umur_pengurus"
             android:drawablePadding="16dp"
             android:fontFamily="@font/roboto"
-            android:hint="@string/isi_khutbah_jumat"
+            android:hint="@string/umur_pengurus"
             android:inputType="text"
             android:maxLines="1"
             android:textColor="#070707" />
@@ -184,7 +117,7 @@
         app:layout_constraintTop_toBottomOf="@id/textInputLayout3">
 
         <Button
-            android:id="@+id/btn_jumat_tambah"
+            android:id="@+id/btn_pengurus_tambah"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:backgroundTint="@color/colorAccent"

@@ -4,14 +4,9 @@
     <string name="title_notifications">Notifications</string>
 
     <string name="title_data_pengajian">Data Pengajian</string>
-    <string name="title_data_jumatan">Data Jumat</string>
+    <string name="title_data_jumatan">Data Jum\'at</string>
     <string name="title_data_kegiatan">Data Kegiatan</string>
-    <string name="title_data_notifikasi">Data Notifikasi</string>
-
-    <string name="title_tanggal_pengajian">Pilih Tanggal Pengajian</string>
-    <string name="title_tanggal_jumatan">Pilih Tanggal Jumatan</string>
-    <string name="title_tanggal_kegiatan">Pilih Tanggal Kegiatan</string>
-    <string name="title_tanggal_notifikasi">Pilih Tanggal Notifikasi</string>
+    <string name="title_data_pengurus">Data Pengurus</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="fragment_about">Ini Adalah Fragment masjid</string>
@@ -26,19 +21,36 @@
     <string name="isya">Isya</string>
     <string name="waktu_sholat">Waktu Sholat</string>
     <string name="bandung">Bandung</string>
+
     <string name="masjid_at_taubah">Masjid At-Taubah Palem Permai</string>
     <string name="tentang_mesjid">Masjid (bentuk tidak baku: mesjid) adalah rumah tempat ibadah umat Islam atau Muslim. Masjid artinya tempat sujud, sebutan lain yang berkaitan dengan masjid di Indonesia adalah musala, langgar atau surau. Istilah tersebut diperuntukkan bagi bangunan menyerupai masjid yang tidak digunakan untuk salat Jumat, iktikaf, dan umumnya berukuran kecil. Selain digunakan sebagai tempat ibadah, masjid juga merupakan pusat kehidupan komunitas muslim. Kegiatan-kegiatan perayaan hari besar, diskusi, kajian agama, ceramah dan belajar Al-Quran sering dilaksanakan di Masjid. Bahkan dalam sejarah Islam, masjid turut memegang peranan dalam aktivitas sosial kemasyarakatan hingga kemiliteran.</string>
     <string name="admin">Admin</string>
-    <string name="fragment_notifikasi">Fragment Notifikasi</string>
-    <string name="notifikasi">Notifikasi</string>
-    <string name="juma_at">Juma\'at</string>
+
+    <string name="pengurus">Pengurus</string>
+    <string name="juma_at">Jumat</string>
     <string name="kegiatan">Kegiatan</string>
     <string name="pengajian">Pengajian</string>
+
     <string name="judul_pengajian">Judul Pengajian</string>
     <string name="tema_pengajian">Tema Pengajian</string>
-    <string name="tambah_data">Tambah Data</string>
+    <string name="tambah_data">Tambah</string>
     <string name="waktu_pengajian">Waktu Pengajian</string>
     <string name="tanggal_pengajian">Tanggal Pengajian</string>
     <string name="isi_pengajian">Isi Pengajian</string>
+
+    <string name="khatib_imam">Khatib/Imam</string>
+    <string name="muadzin">Muadzin</string>
+    <string name="tanggal_jumatan">Tanggal Jum\'atan</string>
+    <string name="isi_khutbah_jumat">Isi Khutbah Jum\'at</string>
+    <string name="waktu_jumat">Waktu Jum\'at</string>
+
+    <string name="nama_pengurus">Nama Pengurus</string>
+    <string name="jabatan_pengurus">Jabatan Pengurus</string>
+    <string name="umur_pengurus">Umur Pengurus</string>
+
+    <string name="judul_kegiatan">Judul Kegiatan</string>
+    <string name="tanggal_kegiatan">Tanggal Kegiatan</string>
+    <string name="waktu_kegiatan">Waktu Kegiatan</string>
+    <string name="isi_kegiatan">Isi Kegiatan</string>
 
 </resources>

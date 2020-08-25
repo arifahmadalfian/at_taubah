@@ -8,14 +8,14 @@ import android.view.ViewGroup
 import com.zackyasgar.at_tauba.R
 
 
-class DataNotifikasiFragment : Fragment() {
+class DataPengurusFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_data_notifikasi, container, false)
+        return inflater.inflate(R.layout.fragment_data_pengurus, container, false)
     }
 
 }

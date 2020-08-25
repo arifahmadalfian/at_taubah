@@ -31,14 +31,14 @@ class DataPengajianFragment : Fragment(), View.OnClickListener{
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        btn_tgl.setOnClickListener(this)
-        btn_jam.setOnClickListener(this)
+        btn_pengajian_tgl.setOnClickListener(this)
+        btn_pengajian_jam.setOnClickListener(this)
 
     }
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.btn_tgl -> {
+            R.id.btn_pengajian_tgl -> {
                 val calendar = Calendar.getInstance()
                 val c_year = calendar.get(Calendar.YEAR)
                 val c_month = calendar.get(Calendar.MONTH)
@@ -46,19 +46,19 @@ class DataPengajianFragment : Fragment(), View.OnClickListener{
 
                 datePickerDialog = DatePickerDialog(
                     context as Context, DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
-                        tv_tgl.text = ("$dayOfMonth-${month + 1}-$year")  //ditambah satu karena index MOUNT di mulai dari nol (0-11)
+                        tv_pengajian_tgl.text = ("$dayOfMonth-${month + 1}-$year")  //ditambah satu karena index MOUNT di mulai dari nol (0-11)
                     }, c_year, c_month, c_day
                 )
 
                 datePickerDialog?.show()
             }
 
-            R.id.btn_jam -> {
+            R.id.btn_pengajian_jam -> {
                 val calendar = Calendar.getInstance()
 
                 timePickerDialog = TimePickerDialog(
                     context as Context, OnTimeSetListener { _, hourOfDay, minute ->
-                        tv_jam.text = ("$hourOfDay:$minute")
+                        tv_pengajian_jam.text = ("$hourOfDay:$minute")
                     },
                     // calender pertamakali di buka
                     calendar[Calendar.HOUR_OF_DAY], calendar[Calendar.MINUTE],

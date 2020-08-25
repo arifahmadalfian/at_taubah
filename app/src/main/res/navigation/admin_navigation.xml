@@ -22,8 +22,8 @@
         android:label="@string/title_data_kegiatan"
         tools:layout="@layout/fragment_data_kegiatan" />
     <fragment
-        android:id="@+id/navigation_admin_notifikasi"
-        android:name="com.zackyasgar.at_tauba.admin.DataNotifikasiFragment"
-        android:label="@string/title_data_notifikasi"
-        tools:layout="@layout/fragment_data_notifikasi" />
+        android:id="@+id/navigation_admin_pengurus"
+        android:name="com.zackyasgar.at_tauba.admin.DataPengurusFragment"
+        android:label="@string/title_data_pengurus"
+        tools:layout="@layout/fragment_data_pengurus" />
 </navigation>
