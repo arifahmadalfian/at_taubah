@@ -4,11 +4,16 @@ import android.app.DatePickerDialog
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
+import android.view.ViewGroup
 import android.widget.DatePicker
 import androidx.fragment.app.*
 import java.util.*
 
 class DatePickerFragment: DialogFragment(), DatePickerDialog.OnDateSetListener {
+
+    companion object {
+        lateinit var M_CONTEXT : Context
+    }
 
     private var mListener: IDialogDateListener? = null
 
@@ -30,13 +35,11 @@ class DatePickerFragment: DialogFragment(), DatePickerDialog.OnDateSetListener {
         val month = calendar.get(Calendar.MONTH)
         val date = calendar.get(Calendar.DATE)
 
-        val mDataPengajianFragment = DataPengajianFragment()
-
-        return DatePickerDialog( activity as Context, this, year, month, date)
+        return DatePickerDialog(M_CONTEXT , this, year, month, date)
     }
 
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
-        mListener?.onDialogDateSet(tag, year, month, dayOfMonth)
+        mListener?.onDialogDateSet(tag , year, month, dayOfMonth)
     }
 
     interface IDialogDateListener {

@@ -1,22 +1,35 @@
 package com.zackyasgar.at_tauba.admin
 
+import android.app.TimePickerDialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentManager
+import android.widget.TimePicker
+import androidx.fragment.app.Fragment
+import com.google.android.material.datepicker.MaterialDatePicker
 import com.zackyasgar.at_tauba.R
 import kotlinx.android.synthetic.main.fragment_data_pengajian.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class DataPengajianFragment : Fragment(), View.OnClickListener, DatePickerFragment.IDialogDateListener, TimePickerFragment.IDialogTimeListener {
+class DataPengajianFragment : Fragment(), View.OnClickListener, TimePickerFragment.IDialogTimeListener{
 
     companion object {
         private const val TANGGAL_TAG = "Tanggal"
         private const val JAM_TAG = "Jam"
     }
+
+    // untuk tanggal
+    var builder = MaterialDatePicker.Builder.datePicker().setTitleText("Pilih Tanggal Pengajian")
+    var materialDatePicker = builder.build()
+
+    // untuk jam
+    private var hour= 0
+    private val minute = 0
+
+    private val formatter = SimpleDateFormat("hh:mm a", Locale.getDefault())
+    private var clockFormat = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,16 +42,27 @@ class DataPengajianFragment : Fragment(), View.OnClickListener, DatePickerFragme
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // tanggal
+        builder = MaterialDatePicker.Builder.datePicker()
+
+        //jam
+
+
         btn_tgl.setOnClickListener(this)
         btn_jam.setOnClickListener(this)
+
+
+        //object: MaterialPickerOnPositiveButtonClickListener<Long>
+        materialDatePicker.addOnPositiveButtonClickListener {
+            tv_tgl.text = materialDatePicker.headerText
+        }
+
     }
 
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btn_tgl -> {
-                val datePickerFragment = DatePickerFragment()
-                val mFragmentManager = childFragmentManager
-                datePickerFragment.show(mFragmentManager, TANGGAL_TAG)
+                materialDatePicker.show(childFragmentManager, TANGGAL_TAG)
             }
             R.id.btn_jam -> {
                 val timePickerFragment = TimePickerFragment()
@@ -46,21 +70,13 @@ class DataPengajianFragment : Fragment(), View.OnClickListener, DatePickerFragme
                 timePickerFragment.show(mFragmentManager, JAM_TAG)
             }
         }
-    }
 
-    override fun onDialogDateSet(tag: String?, year: Int, month: Int, dayOfMonth: Int) {
-        val calendar = Calendar.getInstance()
-        calendar.set(year, month, dayOfMonth)
-        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-        tv_tgl.text = dateFormat.format(calendar.time)
     }
 
     override fun onDialogTimeSet(tag: String?, hourOfDay: Int, minute: Int) {
-        val calendar = Calendar.getInstance()
-        calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
-        calendar.set(Calendar.MINUTE, minute)
-        val dateFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
-        tv_jam.text = dateFormat.format(calendar.time)
+        TODO("Not yet implemented")
     }
 
 }
+
+

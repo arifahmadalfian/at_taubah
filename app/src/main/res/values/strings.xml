@@ -8,6 +8,11 @@
     <string name="title_data_kegiatan">Data Kegiatan</string>
     <string name="title_data_notifikasi">Data Notifikasi</string>
 
+    <string name="title_tanggal_pengajian">Pilih Tanggal Pengajian</string>
+    <string name="title_tanggal_jumatan">Pilih Tanggal Jumatan</string>
+    <string name="title_tanggal_kegiatan">Pilih Tanggal Kegiatan</string>
+    <string name="title_tanggal_notifikasi">Pilih Tanggal Notifikasi</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="fragment_about">Ini Adalah Fragment masjid</string>
     <string name="title_masjid">At-Taubah</string>
