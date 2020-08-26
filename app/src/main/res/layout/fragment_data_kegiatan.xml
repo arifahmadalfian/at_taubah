@@ -34,7 +34,7 @@
         app:layout_constraintTop_toBottomOf="@id/img_kegiatan">
 
         <EditText
-            android:id="@+id/et_pengajian_tema"
+            android:id="@+id/et_kegiatan_judul"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:autofillHints="@string/judul_kegiatan"
