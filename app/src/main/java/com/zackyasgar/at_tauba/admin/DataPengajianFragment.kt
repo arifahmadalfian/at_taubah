@@ -101,7 +101,7 @@ class DataPengajianFragment : Fragment(), View.OnClickListener{
 
         db.collection("pengajian")
             .add(pengajian)
-            .addOnSuccessListener { documentReference ->
+            .addOnSuccessListener { _->
 
                 pg_pengajian.visibility = View.GONE
                 Toast.makeText(context, "Berhasil menambahkan data", Toast.LENGTH_SHORT).show()
@@ -112,7 +112,7 @@ class DataPengajianFragment : Fragment(), View.OnClickListener{
                 tv_pengajian_jam.text = "Waktu Pengajian"
                 et_pengajian_isi.text = null
             }
-            .addOnFailureListener { e ->
+            .addOnFailureListener { _ ->
                 pg_pengajian.visibility = View.GONE
                 Toast.makeText(context, "Gagal menambahkan data", Toast.LENGTH_SHORT).show()
             }
