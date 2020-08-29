@@ -21,8 +21,6 @@ import java.util.*
 
 class DataPengajianFragment : Fragment(), View.OnClickListener{
 
-    val TAG = DataPengajianFragment::class.java.simpleName
-
     // untuk jam dan tanggal
     var timePickerDialog: TimePickerDialog? = null
     var datePickerDialog: DatePickerDialog? = null
