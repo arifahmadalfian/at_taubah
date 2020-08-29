@@ -102,7 +102,6 @@ class DataPengajianFragment : Fragment(), View.OnClickListener{
         db.collection("pengajian")
             .add(pengajian)
             .addOnSuccessListener { documentReference ->
-                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
 
                 pg_pengajian.visibility = View.GONE
                 Toast.makeText(context, "Berhasil menambahkan data", Toast.LENGTH_SHORT).show()
