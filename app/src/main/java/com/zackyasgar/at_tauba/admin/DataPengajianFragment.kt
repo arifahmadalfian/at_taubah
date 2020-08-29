@@ -10,14 +10,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.text.format.DateFormat
+import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.FirebaseFirestore
 import com.zackyasgar.at_tauba.R
 import kotlinx.android.synthetic.main.fragment_data_pengajian.*
 import java.util.*
 
 class DataPengajianFragment : Fragment(), View.OnClickListener{
+
+    val TAG = DataPengajianFragment::class.java.simpleName
 
     // untuk jam dan tanggal
     var timePickerDialog: TimePickerDialog? = null
@@ -53,8 +57,6 @@ class DataPengajianFragment : Fragment(), View.OnClickListener{
                 getJamPengajian()
             }
             R.id.btn_pengajian_tambah -> {
-                // untuk UUID/ID random di firebase
-                val idPengajian = UUID.randomUUID().toString()
 
                 // mengambil text dari fragment_data_pengajian yang sudah di isi
                 val pTema = et_pengajian_tema.text.toString().trim()
@@ -69,7 +71,7 @@ class DataPengajianFragment : Fragment(), View.OnClickListener{
                     pTanggal == "Tanggal Pengajian" -> Toast.makeText(context, "Masukan Tanggal", Toast.LENGTH_SHORT).show()
                     pJam == "Waktu Pengajian" -> Toast.makeText(context, "Masukan Jam", Toast.LENGTH_SHORT).show()
                     pIsi.isEmpty() -> et_pengajian_isi.error = "Isi tidak boleh kosong"
-                    else -> getTambahDataPengajian(idPengajian, pTema, pJudul, pTanggal, pJam, pIsi)
+                    else ->  getTambahDataPengajian(pTema, pJudul, pTanggal, pJam, pIsi)
                 }
             }
         }
@@ -77,7 +79,6 @@ class DataPengajianFragment : Fragment(), View.OnClickListener{
 
     @SuppressLint("SetTextI18n")
     private fun getTambahDataPengajian(
-        idPengajian: String,
         pTema: String,
         pJudul: String,
         pTanggal: String,
@@ -87,12 +88,22 @@ class DataPengajianFragment : Fragment(), View.OnClickListener{
         // menampilkan progress bar
         pg_pengajian.visibility = View.VISIBLE
 
-        // inisialisasi database dan membuat nama folder path: di firebase
-        val db = FirebaseDatabase.getInstance().getReference("pengajian/$idPengajian")
+        //inisialisasi FirebaseFirestore
+        val db = FirebaseFirestore.getInstance()
 
-        // menambahkan pada constructor milik class Pengajia
-        db.setValue(Pengajian(idPengajian, pTema, pJudul, pTanggal, pJam, pIsi))
-            .addOnSuccessListener {
+        val pengajian = hashMapOf(
+            "Tema" to pTema,
+            "Judul" to pJudul,
+            "Tanggal" to pTanggal,
+            "Jam" to pJam,
+            "Isi" to pIsi
+        )
+
+        db.collection("pengajian")
+            .add(pengajian)
+            .addOnSuccessListener { documentReference ->
+                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+
                 pg_pengajian.visibility = View.GONE
                 Toast.makeText(context, "Berhasil menambahkan data", Toast.LENGTH_SHORT).show()
 
@@ -101,12 +112,12 @@ class DataPengajianFragment : Fragment(), View.OnClickListener{
                 tv_pengajian_tgl.text = "Tanggal Pengajian"
                 tv_pengajian_jam.text = "Waktu Pengajian"
                 et_pengajian_isi.text = null
-
             }
-            .addOnFailureListener{
+            .addOnFailureListener { e ->
                 pg_pengajian.visibility = View.GONE
                 Toast.makeText(context, "Gagal menambahkan data", Toast.LENGTH_SHORT).show()
             }
+
     }
 
     private fun getJamPengajian() {
