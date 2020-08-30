@@ -1,13 +1,15 @@
 package com.zackyasgar.at_tauba.ui.home
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.zackyasgar.at_tauba.R
+import com.zackyasgar.at_tauba.model.Pengajian
 
-class PengajianAdapter(var pengajianListItems: List<Pengajian>): RecyclerView.Adapter<PengajianAdapter.PengajianViewHolder>() {
+class PengajianAdapter(var mContext: Context, var pengajianListItems: List<Pengajian>): RecyclerView.Adapter<PengajianAdapter.PengajianViewHolder>() {
 
     inner class PengajianViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
@@ -28,9 +30,10 @@ class PengajianAdapter(var pengajianListItems: List<Pengajian>): RecyclerView.Ad
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PengajianViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        val itemView = inflater.inflate(R.layout.items_row_pengajian, parent, false)
-        return PengajianViewHolder(itemView)
+        var view: View? = null
+        view = LayoutInflater.from(mContext).inflate(R.layout.items_row_pengajian, parent, false)
+        val vHolder = PengajianViewHolder(view)
+        return vHolder
     }
 
     override fun onBindViewHolder(holder: PengajianViewHolder, position: Int) {

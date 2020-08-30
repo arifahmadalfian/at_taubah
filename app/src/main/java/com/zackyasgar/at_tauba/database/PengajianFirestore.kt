@@ -1,4 +1,4 @@
-package com.zackyasgar.at_tauba.ui.home
+package com.zackyasgar.at_tauba.database
 
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.FirebaseFirestore

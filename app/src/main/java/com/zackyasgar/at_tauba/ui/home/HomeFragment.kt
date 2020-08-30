@@ -6,7 +6,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,10 +14,12 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.zackyasgar.at_tauba.R
 import com.zackyasgar.at_tauba.adapter.JumatAdapter
+import com.zackyasgar.at_tauba.database.PengajianFirestore
 import com.zackyasgar.at_tauba.model.Jumat
-import kotlinx.android.synthetic.main.layout_home.*
+import com.zackyasgar.at_tauba.model.Pengajian
 
-class HomeFragment : Fragment(), IOnPengajianItemClickListener {
+class HomeFragment : Fragment(){
+
 
     private var jumatData = FirebaseFirestore.getInstance()
     private var jumatList = jumatData.collection("jumatan")
@@ -26,11 +27,11 @@ class HomeFragment : Fragment(), IOnPengajianItemClickListener {
 
     //inisisal dari class Firebase Pengajian
     private var firebasePengajian = PengajianFirestore()
-
     //array list bertipe <data class Pengajian>
-    private var listPengajian: List<Pengajian> = ArrayList()
-
-    private var pengajianAdapter: PengajianAdapter = PengajianAdapter(listPengajian)
+    private lateinit var pengajianAdapter: PengajianAdapter
+    private lateinit var listPengajian: List<Pengajian>
+    private lateinit var recyclerViewPengajian: RecyclerView
+    private lateinit var v: View
 
     var contex : Context? = null
 
@@ -39,21 +40,22 @@ class HomeFragment : Fragment(), IOnPengajianItemClickListener {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_home, container, false)
-        contex = view.context
-        return view
+        v = inflater.inflate(R.layout.fragment_home, container, false)
+        return v
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        loadDataJumat(view)
+        //loadDataJumat(view)
 
-        loadDataPengajian()
-
+        //loadDataPengajian()
+/*
         rv_pengajian.layoutManager = LinearLayoutManager(contex, LinearLayoutManager.HORIZONTAL, false)
         rv_pengajian.setHasFixedSize(true)
         rv_pengajian.adapter = pengajianAdapter
+
+ */
 
     }
 
@@ -82,10 +84,4 @@ class HomeFragment : Fragment(), IOnPengajianItemClickListener {
             }
         }
     }
-
-    override fun onItemclick(item: Pengajian, position: Int) {
-        Toast.makeText(context, item.judulPengajian, Toast.LENGTH_SHORT).show()
-    }
-
-
 }

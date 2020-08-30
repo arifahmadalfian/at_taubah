@@ -1,4 +1,4 @@
-package com.zackyasgar.at_tauba.ui.home
+package com.zackyasgar.at_tauba.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
