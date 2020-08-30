@@ -14,8 +14,10 @@ class JumatAdapter(options: FirestoreRecyclerOptions<Jumat>) : FirestoreRecycler
 
     class JumatHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var mImam: TextView = itemView.findViewById(R.id.tv_items_jumat_judul)
+        var mMuadzin: TextView = itemView.findViewById(R.id.tv_items_jumat_muadzin)
         var mTanggal: TextView = itemView.findViewById(R.id.tv_items_jumat_tanggal)
         var mJam: TextView = itemView.findViewById(R.id.tv_items_jumat_jam)
+        var mIsi: TextView = itemView.findViewById(R.id.tv_items_jumat_isi)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JumatHolder {
@@ -25,7 +27,9 @@ class JumatAdapter(options: FirestoreRecyclerOptions<Jumat>) : FirestoreRecycler
 
     override fun onBindViewHolder(holder: JumatHolder, position: Int, jumat: Jumat) {
         holder.mImam.text = jumat.imam
+        holder.mMuadzin.text = jumat.muadzin
         holder.mTanggal.text = jumat.tanggal
         holder.mJam.text = jumat.jam
+        holder.mIsi.text = jumat.isi
     }
 }
