@@ -5,7 +5,7 @@ data class Jumat(
     var muadzin: String = "",
     var tanggal: String = "",
     var jam: String = "",
-    var isi: String = ""
+    var isi_khutbah: String = ""
 ) {
 
 }

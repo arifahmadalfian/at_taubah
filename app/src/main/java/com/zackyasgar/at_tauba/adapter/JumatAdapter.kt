@@ -24,7 +24,7 @@ class JumatAdapter(var jumat: List<Jumat>, var context: Context) : RecyclerView.
             muadzin.text = jumat.muadzin
             tanggal.text = jumat.tanggal
             jam.text = jumat.jam
-            isi.text = jumat.isi
+            isi.text = jumat.isi_khutbah
         }
     }
 

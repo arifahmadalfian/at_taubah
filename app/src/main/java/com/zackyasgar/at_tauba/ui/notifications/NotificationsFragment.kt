@@ -50,31 +50,17 @@ class NotificationsFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         jumatList = ArrayList()
-        (jumatList as ArrayList<Jumat>).add(Jumat("a","a","a","a","a"))
-        (jumatList as ArrayList<Jumat>).add(Jumat("b","b","b","b","b"))
-        (jumatList as ArrayList<Jumat>).add(Jumat("c","c","c","c","c"))
-        (jumatList as ArrayList<Jumat>).add(Jumat("c","d","d","d","d"))
-        /*
-        db.collection("jumatan").orderBy("Tanggal", Query.Direction.DESCENDING)
+
+        db.collection("jumatan")
+            .orderBy("tanggal", Query.Direction.DESCENDING)
             .get()
             .addOnSuccessListener { result ->
-                for (document in result) {
-                    val jumat = Jumat(
-                        imam = "${document.data["Imam"]}",
-                        muadzin = "${document.data["Muadzin"]}",
-                        tanggal = "${document.data["Tanggal"]}",
-                        jam = "${document.data["Jam"]}",
-                        isi = "${document.data["Isi Khutbah"]}"
-                    )
-                    (jumatList as ArrayList<Jumat>).add(jumat)
-                    Log.d("successCoy", "${document.id} => ${document.data["Imam"]}")
-                }
+                jumatList = result.toObjects(Jumat::class.java)
+                Log.d("Coy", "$jumatList")
             }
             .addOnFailureListener { exception ->
                 Log.w("failureCoy", "Error getting documents.", exception)
             }
-
-         */
 
     }
 /*

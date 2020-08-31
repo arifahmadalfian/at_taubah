@@ -102,11 +102,11 @@ class DataJumatFragment : Fragment(), View.OnClickListener {
         val db = FirebaseFirestore.getInstance()
 
         val jumatan = hashMapOf(
-            "Imam" to pImam,
-            "Muadzin" to pMuadzin,
-            "Tanggal" to pTanggal,
-            "Jam" to pJam,
-            "Isi Khutbah" to pIsi
+            "imam" to pImam,
+            "muadzin" to pMuadzin,
+            "tanggal" to pTanggal,
+            "jam" to pJam,
+            "isi_khutbah" to pIsi
         )
 
         db.collection("jumatan")
