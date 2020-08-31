@@ -6,14 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
-import com.google.firebase.firestore.QuerySnapshot
 import com.zackyasgar.at_tauba.R
 import com.zackyasgar.at_tauba.adapter.JumatAdapter
+import com.zackyasgar.at_tauba.database.JumatanFirestore
 import com.zackyasgar.at_tauba.model.Jumat
 
 
@@ -25,7 +24,10 @@ class NotificationsFragment : Fragment() {
 
     var v: View? = null
     var recyclerView: RecyclerView? = null
-    var mList: List<Jumat>? = null
+    var layoutManager: RecyclerView.LayoutManager? = null
+    var database: JumatanFirestore? = null
+    var jumatAdapter: JumatAdapter? = null
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,25 +36,20 @@ class NotificationsFragment : Fragment() {
     ): View? {
 
         v = inflater.inflate(R.layout.fragment_notifications, container, false)
-        recyclerView = v?.findViewById(R.id.rv_jumatan)
         return v
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mList = ArrayList()
-        db.collection("jumatan").orderBy("Tanggal", Query.Direction.DESCENDING)
-            .get()
-            .addOnSuccessListener { result ->
-                for (document in result) {
-                    //mList = {document.data.get("Imam")}
-                    Log.d("successCoy", "${document.id} => ${document.data}")
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.w("failureCoy", "Error getting documents.", exception)
-            }
+        recyclerView = v?.findViewById(R.id.rv_jumatan)
+        layoutManager = LinearLayoutManager(activity)
+        recyclerView?.layoutManager = layoutManager
+        recyclerView?.setHasFixedSize(true)
 
+        database = JumatanFirestore()
+
+        jumatAdapter = database?.getDataJumat()?.let { context?.let { cx -> JumatAdapter(it, cx) } }
+        recyclerView?.adapter = jumatAdapter
     }
 /*
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

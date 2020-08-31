@@ -27,11 +27,11 @@
                 android:src="@drawable/jumat"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/tv_items_jumat_judul"
+                app:layout_constraintBottom_toTopOf="@+id/tv_items_jumat_imam"
                 tools:ignore="ContentDescription" />
 
             <TextView
-                android:id="@+id/tv_items_jumat_judul"
+                android:id="@+id/tv_items_jumat_imam"
                 style="@style/StyleText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
                 android:text="@string/tanggal_pengajian"
                 app:layout_constraintEnd_toStartOf="@+id/tv_items_jumat_jam"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_items_jumat_judul" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_items_jumat_imam" />
 
             <TextView
                 android:id="@+id/tv_items_jumat_jam"
@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/tanggal_pengajian"
                 app:layout_constraintStart_toEndOf="@+id/tv_items_jumat_tanggal"
-                app:layout_constraintTop_toBottomOf="@+id/tv_items_jumat_judul" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_items_jumat_imam" />
 
             <TextView
                 android:id="@+id/tv_items_jumat_muadzin"
@@ -79,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/tanggal_pengajian"
                 app:layout_constraintStart_toEndOf="@+id/tv_items_jumat_muadzin"
-                app:layout_constraintTop_toBottomOf="@+id/tv_items_jumat_judul" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_items_jumat_imam" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
