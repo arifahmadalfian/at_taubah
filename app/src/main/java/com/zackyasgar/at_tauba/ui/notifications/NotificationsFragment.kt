@@ -28,6 +28,8 @@ class NotificationsFragment : Fragment() {
     var database: JumatanFirestore? = null
     var jumatAdapter: JumatAdapter? = null
 
+    lateinit var jumatList: List<Jumat>
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,20 +38,44 @@ class NotificationsFragment : Fragment() {
     ): View? {
 
         v = inflater.inflate(R.layout.fragment_notifications, container, false)
+        recyclerView = v?.findViewById(R.id.rv_jumatan)
+        jumatAdapter = context?.let { JumatAdapter(jumatList, it) }
+        recyclerView?.adapter = jumatAdapter
+        recyclerView?.layoutManager = LinearLayoutManager(activity)
+
         return v
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        recyclerView = v?.findViewById(R.id.rv_jumatan)
-        layoutManager = LinearLayoutManager(activity)
-        recyclerView?.layoutManager = layoutManager
-        recyclerView?.setHasFixedSize(true)
 
-        database = JumatanFirestore()
+        jumatList = ArrayList()
+        (jumatList as ArrayList<Jumat>).add(Jumat("a","a","a","a","a"))
+        (jumatList as ArrayList<Jumat>).add(Jumat("b","b","b","b","b"))
+        (jumatList as ArrayList<Jumat>).add(Jumat("c","c","c","c","c"))
+        (jumatList as ArrayList<Jumat>).add(Jumat("c","d","d","d","d"))
+        /*
+        db.collection("jumatan").orderBy("Tanggal", Query.Direction.DESCENDING)
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    val jumat = Jumat(
+                        imam = "${document.data["Imam"]}",
+                        muadzin = "${document.data["Muadzin"]}",
+                        tanggal = "${document.data["Tanggal"]}",
+                        jam = "${document.data["Jam"]}",
+                        isi = "${document.data["Isi Khutbah"]}"
+                    )
+                    (jumatList as ArrayList<Jumat>).add(jumat)
+                    Log.d("successCoy", "${document.id} => ${document.data["Imam"]}")
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.w("failureCoy", "Error getting documents.", exception)
+            }
 
-        jumatAdapter = database?.getDataJumat()?.let { context?.let { cx -> JumatAdapter(it, cx) } }
-        recyclerView?.adapter = jumatAdapter
+         */
+
     }
 /*
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

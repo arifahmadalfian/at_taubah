@@ -9,9 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.zackyasgar.at_tauba.R
 import com.zackyasgar.at_tauba.model.Jumat
 
-class JumatAdapter(var jumat: List<Jumat>, context: Context) : RecyclerView.Adapter<JumatAdapter.JumatHolder>(){
-
-    var mContext = context
+class JumatAdapter(var jumat: List<Jumat>, var context: Context) : RecyclerView.Adapter<JumatAdapter.JumatHolder>(){
 
     inner class JumatHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
@@ -31,7 +29,7 @@ class JumatAdapter(var jumat: List<Jumat>, context: Context) : RecyclerView.Adap
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JumatHolder {
-        val layoutInflater: LayoutInflater = LayoutInflater.from(mContext)
+        val layoutInflater: LayoutInflater = LayoutInflater.from(context)
         val view = layoutInflater.inflate(R.layout.items_row_jumatan, parent, false)
         return JumatHolder(view)
     }

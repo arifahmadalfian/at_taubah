@@ -12,7 +12,12 @@ class JumatanFirestore() {
     private var db = FirebaseFirestore.getInstance()
 
     fun getDataJumat(): List<Jumat> {
-        val results: MutableList<Jumat> = ArrayList()
+        val jumatList: MutableList<Jumat> = ArrayList()
+        (jumatList as ArrayList<Jumat>).add(Jumat("a","a","a","a","a"))
+        jumatList.add(Jumat("b","b","b","b","b"))
+        jumatList.add(Jumat("c","c","c","c","c"))
+        jumatList.add(Jumat("c","d","d","d","d"))
+        /*
         db.collection("jumatan").orderBy("Tanggal", Query.Direction.DESCENDING)
             .get()
             .addOnSuccessListener { result ->
@@ -31,6 +36,9 @@ class JumatanFirestore() {
             .addOnFailureListener { exception ->
                 Log.w("failureCoy", "Error getting documents.", exception)
             }
-        return results
+
+
+         */
+        return jumatList
     }
 }
