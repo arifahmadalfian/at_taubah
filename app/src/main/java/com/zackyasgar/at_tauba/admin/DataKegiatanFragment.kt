@@ -40,36 +40,44 @@ class DataKegiatanFragment : Fragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btn_kegiatan_tgl -> {
-                val calendar = Calendar.getInstance()
-                val c_year = calendar.get(Calendar.YEAR)
-                val c_month = calendar.get(Calendar.MONTH)
-                val c_day = calendar.get(Calendar.DAY_OF_MONTH)
-
-                datePickerDialog = DatePickerDialog(
-                    context as Context, DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
-                        tv_kegiatan_tgl.text = ("$dayOfMonth-${month + 1}-$year")  //ditambah satu karena index MOUNT di mulai dari nol (0-11)
-                    }, c_year, c_month, c_day
-                )
-
-                datePickerDialog?.show()
+                getTanggalKegiatan()
             }
 
             R.id.btn_kegiatan_jam -> {
-                val calendar = Calendar.getInstance()
-
-                timePickerDialog = TimePickerDialog(
-                    context as Context, TimePickerDialog.OnTimeSetListener { _, hourOfDay, minute ->
-                        tv_kegiatan_jam.text = ("$hourOfDay:$minute")
-                    },
-                    // calender pertamakali di buka
-                    calendar[Calendar.HOUR_OF_DAY], calendar[Calendar.MINUTE],
-                    // cek format 24 jam
-                    DateFormat.is24HourFormat(context as Context)
-                )
-
-                timePickerDialog?.show()
+                getJamKegiatan()
             }
         }
+    }
+
+    private fun getJamKegiatan() {
+        val calendar = Calendar.getInstance()
+
+        timePickerDialog = TimePickerDialog(
+            context as Context, TimePickerDialog.OnTimeSetListener { _, hourOfDay, minute ->
+                tv_kegiatan_jam.text = ("$hourOfDay:$minute")
+            },
+            // calender pertamakali di buka
+            calendar[Calendar.HOUR_OF_DAY], calendar[Calendar.MINUTE],
+            // cek format 24 jam
+            DateFormat.is24HourFormat(context as Context)
+        )
+
+        timePickerDialog?.show()
+    }
+
+    private fun getTanggalKegiatan() {
+        val calendar = Calendar.getInstance()
+        val c_year = calendar.get(Calendar.YEAR)
+        val c_month = calendar.get(Calendar.MONTH)
+        val c_day = calendar.get(Calendar.DAY_OF_MONTH)
+
+        datePickerDialog = DatePickerDialog(
+            context as Context, DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
+                tv_kegiatan_tgl.text = ("$dayOfMonth-${month + 1}-$year")  //ditambah satu karena index MOUNT di mulai dari nol (0-11)
+            }, c_year, c_month, c_day
+        )
+
+        datePickerDialog?.show()
     }
 
 }

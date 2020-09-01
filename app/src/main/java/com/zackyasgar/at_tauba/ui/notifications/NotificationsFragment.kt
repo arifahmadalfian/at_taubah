@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.zackyasgar.at_tauba.R
@@ -28,7 +29,7 @@ class NotificationsFragment : Fragment() {
     var database: JumatanFirestore? = null
     var jumatAdapter: JumatAdapter? = null
 
-    lateinit var jumatList: List<Jumat>
+    lateinit var list: MutableList<Jumat>
 
 
     override fun onCreateView(
@@ -39,7 +40,7 @@ class NotificationsFragment : Fragment() {
 
         v = inflater.inflate(R.layout.fragment_notifications, container, false)
         recyclerView = v?.findViewById(R.id.rv_jumatan)
-        jumatAdapter = context?.let { JumatAdapter(jumatList, it) }
+        jumatAdapter = context?.let { JumatAdapter(list, it) }
         recyclerView?.adapter = jumatAdapter
         recyclerView?.layoutManager = LinearLayoutManager(activity)
 
@@ -49,14 +50,17 @@ class NotificationsFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        jumatList = ArrayList()
+        list = ArrayList()
 
         db.collection("jumatan")
             .orderBy("tanggal", Query.Direction.DESCENDING)
             .get()
             .addOnSuccessListener { result ->
-                jumatList = result.toObjects(Jumat::class.java)
-                Log.d("Coy", "$jumatList")
+                val jumatList = result.toObjects(Jumat::class.java)
+                //val j = Jumat(jumatList.toTypedArray.toString())
+                //(list as ArrayList<Jumat>).add(j)
+                Log.d("Coy", "$jumatList ")
+
             }
             .addOnFailureListener { exception ->
                 Log.w("failureCoy", "Error getting documents.", exception)
@@ -96,3 +100,4 @@ class NotificationsFragment : Fragment() {
 
  */
 }
+
