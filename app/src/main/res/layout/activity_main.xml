@@ -10,7 +10,7 @@
         android:id="@+id/nav_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/colorBackground"
+        android:background="@color/colorWhite"
         app:itemTextAppearanceActive="@style/StyleText"
         app:itemTextAppearanceInactive="@style/StyleText"
         app:layout_constraintBottom_toBottomOf="parent"

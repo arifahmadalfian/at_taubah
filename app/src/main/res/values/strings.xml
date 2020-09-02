@@ -52,10 +52,10 @@
     <string name="tanggal_kegiatan">Tanggal Kegiatan</string>
     <string name="waktu_kegiatan">Waktu Kegiatan</string>
     <string name="isi_kegiatan">Isi Kegiatan</string>
+
     <string name="tanggal">Tanggal :</string>
     <string name="jam">Jam :</string>
     <string name="imam">Imam</string>
-    <string name="kegiatan">Kegiatan</string>
     <string name="jabatan">Jabatan</string>
     <string name="nama">Nama</string>
 

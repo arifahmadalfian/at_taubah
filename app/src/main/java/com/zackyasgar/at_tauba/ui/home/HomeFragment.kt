@@ -12,11 +12,13 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.zackyasgar.at_tauba.R
 import com.zackyasgar.at_tauba.adapter.JumatAdapter
+import com.zackyasgar.at_tauba.adapter.KegiatanAdapter
 import com.zackyasgar.at_tauba.adapter.PengajianAdapter
-import com.zackyasgar.at_tauba.database.PengajianFirestore
+import com.zackyasgar.at_tauba.adapter.PengurusAdapter
 import com.zackyasgar.at_tauba.model.Jumat
+import com.zackyasgar.at_tauba.model.Kegiatan
 import com.zackyasgar.at_tauba.model.Pengajian
-import kotlinx.android.synthetic.main.layout_home.*
+import com.zackyasgar.at_tauba.model.Pengurus
 
 class HomeFragment : Fragment(){
 
@@ -30,6 +32,11 @@ class HomeFragment : Fragment(){
     var jumatAdapter: JumatAdapter? = null
     lateinit var listJumat: MutableList<Jumat>
 
+    var kegiatanAdapter: KegiatanAdapter? = null
+    lateinit var listKegiatan: MutableList<Kegiatan>
+
+    var pengurusAdapter: PengurusAdapter? = null
+    lateinit var listPengurus: MutableList<Pengurus>
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -44,6 +51,55 @@ class HomeFragment : Fragment(){
         super.onCreate(savedInstanceState)
         getPengajian()
         getJumatan()
+        getKegiatan()
+        getPengurus()
+    }
+
+    private fun getPengurus() {
+        db.collection("pengurus")
+            .orderBy("umur", Query.Direction.DESCENDING)
+            .get()
+            .addOnSuccessListener { result ->
+                listPengurus = ArrayList()
+                for (i in result){
+                    listPengurus.add(Pengurus(
+                        "${i.data["pengurus"]}",
+                        "${i.data["jabatan"]}",
+                        "${i.data["umur"]}"))
+                }
+                recyclerView = v?.findViewById(R.id.rv_pengurus)
+                pengurusAdapter = PengurusAdapter(listPengurus)
+                recyclerView?.adapter = pengurusAdapter
+                recyclerView?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+
+            }
+            .addOnFailureListener { exception ->
+                Log.w("failureCoy", "Error getting documents.", exception)
+            }
+    }
+
+    private fun getKegiatan() {
+        db.collection("kegiatan")
+            .orderBy("tanggal", Query.Direction.DESCENDING)
+            .get()
+            .addOnSuccessListener { result ->
+                listKegiatan = ArrayList()
+                for (i in result){
+                    listKegiatan.add(Kegiatan(
+                        "${i.data["judul"]}",
+                        "${i.data["tanggal"]}",
+                        "${i.data["jam"]}",
+                        "${i.data["isi"]}"))
+                }
+                recyclerView = v?.findViewById(R.id.rv_kegiatan)
+                kegiatanAdapter = KegiatanAdapter(listKegiatan)
+                recyclerView?.adapter = kegiatanAdapter
+                recyclerView?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+
+            }
+            .addOnFailureListener { exception ->
+                Log.w("failureCoy", "Error getting documents.", exception)
+            }
     }
 
     private fun getPengajian() {
@@ -59,8 +115,6 @@ class HomeFragment : Fragment(){
                         "${i.data["Tanggal"]}",
                         "${i.data["Jam"]}",
                         "${i.data["Isi"]}"))
-                    Log.d("CoyPengajian", "${i.data["Tema"]}")
-
                 }
                 recyclerView = v?.findViewById(R.id.rv_pengajian)
                 pengajianAdapter = PengajianAdapter(listPengajian)
@@ -80,9 +134,11 @@ class HomeFragment : Fragment(){
             .addOnSuccessListener { result ->
                 listJumat = ArrayList()
                 for (i in result){
-                    listJumat.add(Jumat("${i.data["imam"]}","${i.data["muadzin"]}","${i.data["tanggal"]}","${i.data["jam"]}","${i.data["isi_khutbah"]}"))
-                    Log.d("Coy", "${i.data["imam"]}")
-
+                    listJumat.add(Jumat("${i.data["imam"]}",
+                        "${i.data["muadzin"]}",
+                        "${i.data["tanggal"]}",
+                        "${i.data["jam"]}",
+                        "${i.data["isi_khutbah"]}"))
                 }
                 recyclerView = v?.findViewById(R.id.rv_jumatan)
                 jumatAdapter = JumatAdapter(listJumat)
