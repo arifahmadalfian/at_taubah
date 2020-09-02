@@ -13,10 +13,15 @@ import kotlinx.android.synthetic.main.items_row_pengajian.view.*
 class PengajianAdapter(var pengajianListItems: List<Pengajian>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     class PengajianViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+
+        var judul: TextView = itemView.findViewById(R.id.tv_items_pengajian_judul)
+        var tanggal: TextView = itemView.findViewById(R.id.tv_items_pengajian_tanggal)
+        var jam: TextView = itemView.findViewById(R.id.tv_items_pengajian_jam)
+
         fun bind(pengajian: Pengajian) {
-            itemView.tv_items_pengajian_judul.text = pengajian.judulPengajian
-            itemView.tv_items_pengajian_tanggal.text = pengajian.tanggalPengajian
-            itemView.tv_items_pengajian_jam.text = pengajian.jamPengajian
+            judul.text = pengajian.temaPengajian
+            tanggal.text = pengajian.tanggalPengajian
+            jam.text = pengajian.jamPengajian
         }
     }
 

@@ -36,27 +36,18 @@ class HomeFragment : Fragment(){
             savedInstanceState: Bundle?
     ): View? {
         v = inflater.inflate(R.layout.fragment_home, container, false)
+
         return v
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        listPengajian = ArrayList()
-        listPengajian.add(Pengajian("a", "a", "a", "a", "a"))
-        listPengajian.add(Pengajian("a", "a", "a", "a", "a"))
-        listPengajian.add(Pengajian("a", "a", "a", "a", "a"))
-
-        recyclerView = v?.findViewById(R.id.rv_pengajian)
-        pengajianAdapter = PengajianAdapter(listPengajian)
-        recyclerView?.adapter = pengajianAdapter
-        recyclerView?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-        //getJumat()
+        getPengajian()
     }
 
     private fun getPengajian() {
         db.collection("pengajian")
-            .orderBy("tanggal", Query.Direction.DESCENDING)
+            .orderBy("Tanggal", Query.Direction.DESCENDING)
             .get()
             .addOnSuccessListener { result ->
                 listPengajian = ArrayList()
@@ -81,26 +72,5 @@ class HomeFragment : Fragment(){
             }
     }
 
-    private fun getJumat() {
-        db.collection("jumatan")
-            .orderBy("tanggal", Query.Direction.DESCENDING)
-            .get()
-            .addOnSuccessListener { result ->
-                list = ArrayList()
-                for (i in result){
-                    list.add(Jumat("${i.data["imam"]}","${i.data["muadzin"]}","${i.data["tanggal"]}","${i.data["jam"]}","${i.data["isi_khutbah"]}"))
-                    Log.d("Coy", "${i.data["imam"]}")
-
-                }
-                recyclerView = v?.findViewById(R.id.rv_jumatan)
-                jumatAdapter = JumatAdapter(list)
-                recyclerView?.adapter = jumatAdapter
-                recyclerView?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-
-            }
-            .addOnFailureListener { exception ->
-                Log.w("failureCoy", "Error getting documents.", exception)
-            }
-    }
 
 }

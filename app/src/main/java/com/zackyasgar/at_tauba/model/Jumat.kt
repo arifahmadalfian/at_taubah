@@ -6,6 +6,4 @@ data class Jumat(
     var tanggal: String = "",
     var jam: String = "",
     var isi_khutbah: String = ""
-) {
-
-}
+)
