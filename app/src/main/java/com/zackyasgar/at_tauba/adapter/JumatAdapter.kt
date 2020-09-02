@@ -13,18 +13,14 @@ class JumatAdapter(var jumat: List<Jumat>) : RecyclerView.Adapter<JumatAdapter.J
 
     inner class JumatHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
-        var imam: TextView = itemView.findViewById(R.id.tv_items_jumat_imam)
-        var muadzin: TextView = itemView.findViewById(R.id.tv_items_jumat_muadzin)
-        var tanggal: TextView = itemView.findViewById(R.id.tv_items_jumat_tanggal)
-        var jam: TextView = itemView.findViewById(R.id.tv_items_jumat_jam)
-        var isi: TextView = itemView.findViewById(R.id.tv_items_jumat_isi)
+        var imam: TextView = itemView.findViewById(R.id.tv_items_jumatan_imam)
+        var tanggal: TextView = itemView.findViewById(R.id.tv_items_jumatan_tanggal)
+        var jam: TextView = itemView.findViewById(R.id.tv_items_jumatan_jam)
 
         fun initialize(jumat: Jumat){
             imam.text = jumat.imam
-            muadzin.text = jumat.muadzin
             tanggal.text = jumat.tanggal
             jam.text = jumat.jam
-            isi.text = jumat.isi_khutbah
         }
     }
 

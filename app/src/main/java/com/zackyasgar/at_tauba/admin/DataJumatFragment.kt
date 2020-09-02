@@ -46,50 +46,33 @@ class DataJumatFragment : Fragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btn_jumat_tambah -> {
-                // mengambil text dari fragment_data_pengajian yang sudah di isi
-                val pImam = et_jumat_imam.text.toString().trim()
-                val pMuadzin = et_jumat_muadzin.text.toString().trim()
-                val pTanggal = tv_jumat_tgl.text.toString().trim()
-                val pJam = tv_jumat_jam.text.toString().trim()
-                val pIsi = et_jumat_isi_khutbah.text.toString().trim()
-
-                when {
-                    pImam.isEmpty() -> et_jumat_imam.error = "Imam tidak boleh kosong"
-                    pMuadzin.isEmpty() -> et_jumat_muadzin.error = "Muadzin tidak boleh kosong"
-                    pTanggal == "Tanggal Jum\'atan" -> Toast.makeText(context, "Masukan Tanggal", Toast.LENGTH_SHORT).show()
-                    pJam == "Waktu Jum\'at" -> Toast.makeText(context, "Masukan Jam", Toast.LENGTH_SHORT).show()
-                    pIsi.isEmpty() -> et_jumat_isi_khutbah.error = "Isi khutbah tidak boleh kosong"
-                    else ->  getTambahDataJumat(pImam, pMuadzin, pTanggal, pJam, pIsi)
-                }
+                getTambahJumat()
             }
             R.id.btn_jumat_tgl -> {
-                val calendar = Calendar.getInstance()
-                val c_year = calendar.get(Calendar.YEAR)
-                val c_month = calendar.get(Calendar.MONTH)
-                val c_day = calendar.get(Calendar.DAY_OF_MONTH)
-
-                datePickerDialog = DatePickerDialog(
-                    context as Context, DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
-                        tv_jumat_tgl.text = ("$dayOfMonth-${month + 1}-$year")  //ditambah satu karena index MOUNT di mulai dari nol (0-11)
-                    }, c_year, c_month, c_day
-                )
-                datePickerDialog?.show()
+                getTanggalJumat()
             }
 
             R.id.btn_jumat_jam -> {
-                val calendar = Calendar.getInstance()
-
-                timePickerDialog = TimePickerDialog(
-                    context as Context, TimePickerDialog.OnTimeSetListener { _, hourOfDay, minute ->
-                        tv_jumat_jam.text = ("$hourOfDay:$minute")
-                    },
-                    // calender pertamakali di buka
-                    calendar[Calendar.HOUR_OF_DAY], calendar[Calendar.MINUTE],
-                    // cek format 24 jam
-                    DateFormat.is24HourFormat(context as Context)
-                )
-                timePickerDialog?.show()
+                getJamJumat()
             }
+        }
+    }
+
+    private fun getTambahJumat() {
+        // mengambil text dari fragment_data_pengajian yang sudah di isi
+        val pImam = et_jumat_imam.text.toString()
+        val pMuadzin = et_jumat_muadzin.text.toString()
+        val pTanggal = tv_jumat_tgl.text.toString()
+        val pJam = tv_jumat_jam.text.toString()
+        val pIsi = et_jumat_isi_khutbah.text.toString()
+
+        when {
+            pImam.isEmpty() -> et_jumat_imam.error = "Imam tidak boleh kosong"
+            pMuadzin.isEmpty() -> et_jumat_muadzin.error = "Muadzin tidak boleh kosong"
+            pTanggal == "Tanggal Jum\'atan" -> Toast.makeText(context, "Masukan Tanggal", Toast.LENGTH_SHORT).show()
+            pJam == "Waktu Jum\'at" -> Toast.makeText(context, "Masukan Jam", Toast.LENGTH_SHORT).show()
+            pIsi.isEmpty() -> et_jumat_isi_khutbah.error = "Isi khutbah tidak boleh kosong"
+            else ->  getTambahDataJumat(pImam, pMuadzin, pTanggal, pJam, pIsi)
         }
     }
 
@@ -126,6 +109,35 @@ class DataJumatFragment : Fragment(), View.OnClickListener {
                 pg_pengajian.visibility = View.GONE
                 Toast.makeText(context, "Gagal menambahkan data", Toast.LENGTH_SHORT).show()
             }
+    }
+
+    private fun getJamJumat() {
+        val calendar = Calendar.getInstance()
+
+        timePickerDialog = TimePickerDialog(
+            context as Context, TimePickerDialog.OnTimeSetListener { _, hourOfDay, minute ->
+                tv_jumat_jam.text = ("$hourOfDay:$minute")
+            },
+            // calender pertamakali di buka
+            calendar[Calendar.HOUR_OF_DAY], calendar[Calendar.MINUTE],
+            // cek format 24 jam
+            DateFormat.is24HourFormat(context as Context)
+        )
+        timePickerDialog?.show()
+    }
+
+    private fun getTanggalJumat() {
+        val calendar = Calendar.getInstance()
+        val c_year = calendar.get(Calendar.YEAR)
+        val c_month = calendar.get(Calendar.MONTH)
+        val c_day = calendar.get(Calendar.DAY_OF_MONTH)
+
+        datePickerDialog = DatePickerDialog(
+            context as Context, DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
+                tv_jumat_tgl.text = ("$dayOfMonth/${month + 1}/$year")  //ditambah satu karena index MOUNT di mulai dari nol (0-11)
+            }, c_year, c_month, c_day
+        )
+        datePickerDialog?.show()
     }
 
 }

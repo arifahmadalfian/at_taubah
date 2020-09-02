@@ -57,11 +57,11 @@ class DataPengajianFragment : Fragment(), View.OnClickListener{
             R.id.btn_pengajian_tambah -> {
 
                 // mengambil text dari fragment_data_pengajian yang sudah di isi
-                val pTema = et_pengajian_tema.text.toString().trim()
-                val pJudul = et_pengajian_judul.text.toString().trim()
-                val pTanggal = tv_pengajian_tgl.text.toString().trim()
-                val pJam = tv_pengajian_jam.text.toString().trim()
-                val pIsi = et_pengajian_isi.text.toString().trim()
+                val pTema = et_pengajian_tema.text.toString()
+                val pJudul = et_pengajian_judul.text.toString()
+                val pTanggal = tv_pengajian_tgl.text.toString()
+                val pJam = tv_pengajian_jam.text.toString()
+                val pIsi = et_pengajian_isi.text.toString()
 
                 when {
                     pTema.isEmpty() -> et_pengajian_tema.error = "Tema tidak boleh kosong"
@@ -140,7 +140,7 @@ class DataPengajianFragment : Fragment(), View.OnClickListener{
 
         datePickerDialog = DatePickerDialog(
             context as Context, DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
-                tv_pengajian_tgl.text = ("$dayOfMonth-${month + 1}-$year")  //ditambah satu karena index MOUNT di mulai dari nol (0-11)
+                tv_pengajian_tgl.text = ("$dayOfMonth/${month + 1}/$year")  //ditambah satu karena index MOUNT di mulai dari nol (0-11)
             }, c_year, c_month, c_day
         )
         datePickerDialog?.show()

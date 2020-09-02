@@ -21,8 +21,8 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="360dp"
-                android:layout_height="170dp"
+                android:layout_width="330dp"
+                android:layout_height="130dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ngaji"
                 app:layout_constraintStart_toStartOf="parent"
@@ -35,23 +35,48 @@
                 style="@style/StyleText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:text="@string/judul_pengajian"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/tv_items_pengajian_tanggal"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+            <TextView
+                android:id="@+id/TextView11"
+                style="@style/StyleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/tanggal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_items_pengajian_tanggal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_items_pengajian_judul" />
 
             <TextView
                 android:id="@+id/tv_items_pengajian_tanggal"
                 style="@style/StyleText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:text="@string/tanggal_pengajian"
+                android:layout_marginEnd="16dp"
+                android:text="@string/tanggal"
+                app:layout_constraintEnd_toStartOf="@+id/TextView2"
+                app:layout_constraintStart_toEndOf="@+id/TextView11"
+                app:layout_constraintTop_toBottomOf="@+id/tv_items_pengajian_judul" />
+
+            <TextView
+                android:id="@+id/TextView2"
+                style="@style/StyleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/jam"
+                app:layout_constraintStart_toEndOf="@+id/tv_items_pengajian_tanggal"
                 app:layout_constraintEnd_toStartOf="@+id/tv_items_pengajian_jam"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_items_pengajian_judul" />
 
             <TextView
@@ -59,8 +84,8 @@
                 style="@style/StyleText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tanggal_pengajian"
-                app:layout_constraintStart_toEndOf="@+id/tv_items_pengajian_tanggal"
+                android:text="@string/jam"
+                app:layout_constraintStart_toEndOf="@+id/TextView2"
                 app:layout_constraintTop_toBottomOf="@+id/tv_items_pengajian_judul" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

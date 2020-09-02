@@ -21,65 +21,72 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="360dp"
-                android:layout_height="170dp"
+                android:layout_width="330dp"
+                android:layout_height="130dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/jumat"
+                app:layout_constraintBottom_toTopOf="@+id/tv_items_jumatan_imam"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/tv_items_jumat_imam"
                 tools:ignore="ContentDescription" />
 
             <TextView
-                android:id="@+id/tv_items_jumat_imam"
+                android:id="@+id/tv_items_jumatan_imam"
                 style="@style/StyleText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:text="@string/judul_pengajian"
+                android:text="@string/imam"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/tv_items_jumat_tanggal"
+                app:layout_constraintBottom_toTopOf="@+id/TextView11"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
             <TextView
-                android:id="@+id/tv_items_jumat_tanggal"
+                android:id="@+id/TextView11"
+                style="@style/StyleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/tanggal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_items_jumatan_tanggal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_items_jumatan_imam" />
+
+            <TextView
+                android:id="@+id/tv_items_jumatan_tanggal"
                 style="@style/StyleText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
-                android:text="@string/tanggal_pengajian"
-                app:layout_constraintEnd_toStartOf="@+id/tv_items_jumat_jam"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_items_jumat_imam" />
+                android:text="@string/tanggal"
+                app:layout_constraintEnd_toStartOf="@+id/TextView2"
+                app:layout_constraintStart_toEndOf="@+id/TextView11"
+                app:layout_constraintTop_toBottomOf="@+id/tv_items_jumatan_imam" />
 
             <TextView
-                android:id="@+id/tv_items_jumat_jam"
+                android:id="@+id/TextView2"
                 style="@style/StyleText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tanggal_pengajian"
-                app:layout_constraintStart_toEndOf="@+id/tv_items_jumat_tanggal"
-                app:layout_constraintTop_toBottomOf="@+id/tv_items_jumat_imam" />
+                android:text="@string/jam"
+                app:layout_constraintStart_toEndOf="@+id/tv_items_jumatan_tanggal"
+                app:layout_constraintEnd_toStartOf="@+id/tv_items_jumatan_jam"
+                app:layout_constraintTop_toBottomOf="@+id/tv_items_jumatan_imam" />
 
             <TextView
-                android:id="@+id/tv_items_jumat_muadzin"
+                android:id="@+id/tv_items_jumatan_jam"
                 style="@style/StyleText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tanggal_pengajian"
-                app:layout_constraintStart_toEndOf="@+id/tv_items_jumat_tanggal"
-                app:layout_constraintTop_toBottomOf="@+id/tv_items_jumat_isi" />
-
-            <TextView
-                android:id="@+id/tv_items_jumat_isi"
-                style="@style/StyleText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tanggal_pengajian"
-                app:layout_constraintStart_toEndOf="@+id/tv_items_jumat_muadzin"
-                app:layout_constraintTop_toBottomOf="@+id/tv_items_jumat_imam" />
+                android:text="@string/jam"
+                app:layout_constraintStart_toEndOf="@+id/TextView2"
+                app:layout_constraintTop_toBottomOf="@+id/tv_items_jumatan_imam" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
