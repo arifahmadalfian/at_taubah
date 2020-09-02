@@ -11,7 +11,7 @@ import com.zackyasgar.at_tauba.model.Jumat
 
 class JumatAdapter(var jumat: List<Jumat>) : RecyclerView.Adapter<JumatAdapter.JumatHolder>(){
 
-    inner class JumatHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    class JumatHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
         var imam: TextView = itemView.findViewById(R.id.tv_items_jumatan_imam)
         var tanggal: TextView = itemView.findViewById(R.id.tv_items_jumatan_tanggal)
