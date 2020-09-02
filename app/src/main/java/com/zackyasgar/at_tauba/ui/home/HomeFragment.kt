@@ -20,14 +20,15 @@ import kotlinx.android.synthetic.main.layout_home.*
 
 class HomeFragment : Fragment(){
 
-    var pengajianAdapter: PengajianAdapter? = null
-    lateinit var listPengajian: MutableList<Pengajian>
-
     private var db = FirebaseFirestore.getInstance()
     var v: View? = null
     var recyclerView: RecyclerView? = null
+
+    var pengajianAdapter: PengajianAdapter? = null
+    lateinit var listPengajian: MutableList<Pengajian>
+
     var jumatAdapter: JumatAdapter? = null
-    lateinit var list: MutableList<Jumat>
+    lateinit var listJumat: MutableList<Jumat>
 
 
     override fun onCreateView(
@@ -36,13 +37,13 @@ class HomeFragment : Fragment(){
             savedInstanceState: Bundle?
     ): View? {
         v = inflater.inflate(R.layout.fragment_home, container, false)
-
         return v
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         getPengajian()
+        getJumatan()
     }
 
     private fun getPengajian() {
@@ -64,6 +65,28 @@ class HomeFragment : Fragment(){
                 recyclerView = v?.findViewById(R.id.rv_pengajian)
                 pengajianAdapter = PengajianAdapter(listPengajian)
                 recyclerView?.adapter = pengajianAdapter
+                recyclerView?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+
+            }
+            .addOnFailureListener { exception ->
+                Log.w("failureCoy", "Error getting documents.", exception)
+            }
+    }
+
+    private fun getJumatan() {
+        db.collection("jumatan")
+            .orderBy("tanggal", Query.Direction.DESCENDING)
+            .get()
+            .addOnSuccessListener { result ->
+                listJumat = ArrayList()
+                for (i in result){
+                    listJumat.add(Jumat("${i.data["imam"]}","${i.data["muadzin"]}","${i.data["tanggal"]}","${i.data["jam"]}","${i.data["isi_khutbah"]}"))
+                    Log.d("Coy", "${i.data["imam"]}")
+
+                }
+                recyclerView = v?.findViewById(R.id.rv_jumatan)
+                jumatAdapter = JumatAdapter(listJumat)
+                recyclerView?.adapter = jumatAdapter
                 recyclerView?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 
             }
