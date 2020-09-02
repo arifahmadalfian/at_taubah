@@ -13,8 +13,10 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.zackyasgar.at_tauba.R
 import com.zackyasgar.at_tauba.adapter.JumatAdapter
+import com.zackyasgar.at_tauba.adapter.PengajianAdapter
 import com.zackyasgar.at_tauba.database.JumatanFirestore
 import com.zackyasgar.at_tauba.model.Jumat
+import com.zackyasgar.at_tauba.model.Pengajian
 
 
 class NotificationsFragment : Fragment() {
@@ -39,65 +41,36 @@ class NotificationsFragment : Fragment() {
     ): View? {
 
         v = inflater.inflate(R.layout.fragment_notifications, container, false)
-        recyclerView = v?.findViewById(R.id.rv_jumatan)
-        jumatAdapter = context?.let { JumatAdapter(list, it) }
-        recyclerView?.adapter = jumatAdapter
-        recyclerView?.layoutManager = LinearLayoutManager(activity)
-
         return v
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        list = ArrayList()
+        getJumat()
+    }
 
+    private fun getJumat() {
         db.collection("jumatan")
             .orderBy("tanggal", Query.Direction.DESCENDING)
             .get()
             .addOnSuccessListener { result ->
-                val jumatList = result.toObjects(Jumat::class.java)
-                //val j = Jumat(jumatList.toTypedArray.toString())
-                //(list as ArrayList<Jumat>).add(j)
-                Log.d("Coy", "$jumatList ")
+                list = ArrayList()
+                for (i in result){
+                    list.add(Jumat("${i.data["imam"]}","${i.data["muadzin"]}","${i.data["tanggal"]}","${i.data["jam"]}","${i.data["isi_khutbah"]}"))
+                    Log.d("Coy", "${i.data["imam"]}")
+
+                }
+                recyclerView = v?.findViewById(R.id.rv_jumatan)
+                jumatAdapter = JumatAdapter(list)
+                recyclerView?.adapter = jumatAdapter
+                recyclerView?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 
             }
             .addOnFailureListener { exception ->
                 Log.w("failureCoy", "Error getting documents.", exception)
             }
-
-    }
-/*
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        getJumat(view)
     }
 
-    private fun getJumat(view: View) {
-         val query = colection.orderBy("tanggal", Query.Direction.DESCENDING)
-
-        val options = FirestoreRecyclerOptions.Builder<Jumat>()
-            .setQuery(query, Jumat::class.java)
-            .build()
-
-        adapter = JumatAdapter(options)
-
-        var rv : RecyclerView = view.findViewById(R.id.rv_jumatan)
-        rv.setHasFixedSize(true)
-        rv.layoutManager = LinearLayoutManager(v?.context)
-        rv.adapter = adapter
-    }
-
-    override fun onStart() {
-        super.onStart()
-        adapter.startListening()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        adapter.stopListening()
-    }
-
- */
 }
 
