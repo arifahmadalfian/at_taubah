@@ -4,7 +4,7 @@
     package="com.zackyasgar.at_tauba">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:allowBackup="true"
@@ -13,12 +13,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".admin.AdminActivity"
-            android:theme="@style/AppTheme.Admin"/>
-
+        <activity android:name=".MainActivity"/>
         <activity
-            android:name=".MainActivity"
+            android:name=".admin.AdminActivity"
+            android:theme="@style/AppTheme.Admin" />
+        <activity
+            android:name=".SplashScreen"
+            android:theme="@style/AppThemeSplashScreen"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
