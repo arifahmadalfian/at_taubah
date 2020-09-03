@@ -59,5 +59,8 @@
     <string name="jabatan">Jabatan</string>
     <string name="nama">Nama</string>
     <string name="lihat_semua">Lihat Semua</string>
+    <string name="selamat_datang">Selamat Datang</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
 
 </resources>
