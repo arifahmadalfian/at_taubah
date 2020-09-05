@@ -10,10 +10,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.text.format.DateFormat
-import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.zackyasgar.at_tauba.R
 import kotlinx.android.synthetic.main.fragment_data_pengajian.*

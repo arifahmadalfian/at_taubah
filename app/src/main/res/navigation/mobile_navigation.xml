@@ -23,4 +23,16 @@
         android:label="@string/title_masjid"
         tools:layout="@layout/fragment_masjid" />
 
+    <navigation android:id="@+id/navigation"
+        app:startDestination="@id/loginActivity">
+        <activity
+            android:id="@+id/loginActivity"
+            android:name="com.zackyasgar.at_tauba.LoginActivity"
+            android:label="activity_login"
+            tools:layout="@layout/activity_login" />
+        <action
+            android:id="@+id/action_global_navigation_masjid"
+            app:destination="@id/navigation_masjid" />
+    </navigation>
+
 </navigation>

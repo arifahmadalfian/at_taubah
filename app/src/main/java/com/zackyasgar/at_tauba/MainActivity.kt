@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
 
         if (!message.isNullOrEmpty()){
             AlertDialog.Builder(this)
-                .setTitle("Notivikasi baru")
+                .setTitle("Notifikasi baru")
                 .setMessage(message)
                 .setPositiveButton("Ok", DialogInterface.OnClickListener{ _, _ ->  }).show()
         }

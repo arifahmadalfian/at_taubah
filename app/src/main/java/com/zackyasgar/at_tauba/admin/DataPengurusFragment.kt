@@ -1,5 +1,6 @@
 package com.zackyasgar.at_tauba.admin
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,8 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.auth.FirebaseAuth.getInstance
+import com.zackyasgar.at_tauba.LoginActivity
 import com.zackyasgar.at_tauba.R
-import kotlinx.android.synthetic.main.fragment_data_kegiatan.*
 import kotlinx.android.synthetic.main.fragment_data_pengurus.*
 
 
@@ -34,7 +36,18 @@ class DataPengurusFragment : Fragment(), View.OnClickListener {
             R.id.btn_pengurus_tambah -> {
                 getTambahPengurus()
             }
+            R.id.btn_logout_test -> {
+                getLogout()
+            }
         }
+    }
+
+    private fun getLogout() {
+        getInstance().signOut()
+        val intent = Intent(context, LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK.or(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        startActivity(intent)
+        Toast.makeText(activity, " Berhasil Logout", Toast.LENGTH_SHORT).show()
     }
 
     private fun getTambahPengurus() {
