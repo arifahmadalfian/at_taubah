@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".LoginActivity"
-            android:theme="@style/AppThemeSplashScreen"/>
+            android:theme="@style/AppTheme.Admin"/>
         <activity android:name=".MainActivity" />
         <activity
             android:name=".admin.AdminActivity"

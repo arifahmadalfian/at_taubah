@@ -10,14 +10,13 @@
     <LinearLayout
         android:id="@+id/linearLayout6"
         android:layout_width="match_parent"
-        android:layout_height="520dp"
+        android:layout_height="600dp"
         android:background="@drawable/bg_login"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/textview6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/textview6"
-        android:orientation="horizontal" >
-    </LinearLayout>
+        app:layout_constraintTop_toTopOf="parent"></LinearLayout>
 
     <TextView
         android:id="@+id/textview6"
@@ -39,7 +38,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="40dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="80dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout6"
         app:layout_constraintEnd_toEndOf="parent"
@@ -91,7 +90,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textInputLayout2"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
+                    android:layout_height="wrap_content"
                     android:textColorHint="@color/textLayout"
                     android:theme="@style/EditScreenTextInputLayoutStyle"
                     app:layout_constraintEnd_toEndOf="@id/constraintLayout"
@@ -120,9 +119,10 @@
     </LinearLayout>
 
     <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="68dp"
         android:background="@drawable/bg_bulat"
         android:elevation="5dp"
         android:gravity="center"
@@ -131,10 +131,10 @@
         app:layout_constraintTop_toTopOf="@+id/linearLayout6">
 
         <ImageView
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:background="@drawable/ic_baseline_person_24"
             tools:ignore="ContentDescription" />
 
@@ -143,8 +143,7 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="80dp"
-        android:elevation="5dp"
+        android:layout_marginBottom="65dp"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout6"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout6"
@@ -154,11 +153,11 @@
             android:id="@+id/btn_login"
             style="@style/StyleText"
             android:layout_width="150dp"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_btn_login"
             android:elevation="2dp"
-            android:backgroundTintMode="@color/colorPrimary"
-            android:backgroundTint="@color/colorPrimary"
             android:text="@string/masuk"
+            android:textColor="@color/colorWhite"
             android:textSize="18sp"
             android:textStyle="bold"
             tools:ignore="ContentDescription" />
@@ -169,13 +168,13 @@
         android:id="@+id/progres_bar"
         android:layout_width="wrap_content"
         android:layout_height="125dp"
-        android:layout_marginTop="200dp"
-        android:visibility="gone"
         android:background="@color/colorWhite"
+        android:visibility="gone"
         android:elevation="4dp"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">

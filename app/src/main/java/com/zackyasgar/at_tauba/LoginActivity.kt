@@ -38,7 +38,6 @@ class LoginActivity : AppCompatActivity() {
             .addOnSuccessListener {
                 val intent = Intent(this@LoginActivity, AdminActivity::class.java)
                 startActivity(intent)
-                finish()
                 progres_bar.visibility = View.GONE
             }
             .addOnFailureListener {

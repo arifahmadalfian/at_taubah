@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.zackyasgar.at_tauba.LoginActivity
 import com.zackyasgar.at_tauba.R
 import com.zackyasgar.at_tauba.admin.AdminActivity
 import kotlinx.android.synthetic.main.fragment_masjid.*
@@ -56,7 +57,7 @@ class MasjidFragment : Fragment(), View.OnClickListener {
 
     // pindah ke activity baru
     private fun getHalamanAdmin() {
-        val intent = Intent(activity, AdminActivity::class.java)
+        val intent = Intent(activity, LoginActivity::class.java)
         startActivity(intent)
     }
 

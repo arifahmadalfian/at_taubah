@@ -6,7 +6,7 @@
         android:right="-220dp"
         android:top="-300dp">
         <shape android:shape="oval">
-            <solid android:color="#FFFFFF" />
+            <solid android:color="@color/colorBackground" />
         </shape>
     </item>
 </layer-list>

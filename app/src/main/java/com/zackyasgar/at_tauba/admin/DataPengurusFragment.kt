@@ -36,18 +36,7 @@ class DataPengurusFragment : Fragment(), View.OnClickListener {
             R.id.btn_pengurus_tambah -> {
                 getTambahPengurus()
             }
-            R.id.btn_logout_test -> {
-                getLogout()
-            }
         }
-    }
-
-    private fun getLogout() {
-        getInstance().signOut()
-        val intent = Intent(context, LoginActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK.or(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-        startActivity(intent)
-        Toast.makeText(activity, " Berhasil Logout", Toast.LENGTH_SHORT).show()
     }
 
     private fun getTambahPengurus() {
