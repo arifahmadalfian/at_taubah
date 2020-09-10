@@ -66,5 +66,9 @@
     <string name="masuk">Login</string>
     <string name="loading">Loading...</string>
     <string name="logout">Logout</string>
+    <string name="notifikasi">Notifikasi</string>
+    <string name="title">Title</string>
+    <string name="deskripsi">Deskripsi</string>
+    <string name="kirim">Kirim</string>
 
 </resources>

@@ -26,4 +26,8 @@
         android:name="com.zackyasgar.at_tauba.admin.DataPengurusFragment"
         android:label="@string/title_data_pengurus"
         tools:layout="@layout/fragment_data_pengurus" />
+    <fragment
+        android:id="@+id/navigation_admin_notifikasi"
+        android:name="com.zackyasgar.at_tauba.admin.DataNotifikasiFragment"
+        android:label="DataNotifikasiFragment" />
 </navigation>

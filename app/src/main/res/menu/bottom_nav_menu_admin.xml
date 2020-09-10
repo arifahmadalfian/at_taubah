@@ -19,4 +19,9 @@
         android:id="@+id/navigation_admin_pengurus"
         android:icon="@drawable/ic_mejid"
         android:title="@string/pengurus"/>
+
+    <item
+        android:id="@+id/navigation_admin_notifikasi"
+        android:icon="@drawable/ic_mejid"
+        android:title="@string/notifikasi"/>
 </menu>

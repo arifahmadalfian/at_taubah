@@ -46,7 +46,7 @@ class DataPengurusFragment : Fragment(), View.OnClickListener {
         val pUmur = et_pengurus_umur.text.toString()
 
         when {
-            pPengurus.isEmpty() -> et_pengurus_jabatan.error = "Pengurus tidak boleh kosong"
+            pPengurus.isEmpty() -> et_pengurus_nama.error = "Pengurus tidak boleh kosong"
             pJabatan.isEmpty() -> et_pengurus_jabatan.error = "Jabatan tidak boleh kosong"
             pUmur.isEmpty() -> et_pengurus_umur.error = "Umur tidak boleh kosong"
             else ->  getTambahDataKegiatan(pPengurus, pJabatan, pUmur)
