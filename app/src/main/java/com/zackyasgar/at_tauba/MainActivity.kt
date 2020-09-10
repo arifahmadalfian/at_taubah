@@ -37,10 +37,10 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
         //untuk messeg popUp pada aplikasi ketika aplikasi sedang di buka
-        getMessageAlert()
+        //getMessageAlert()
 
     }
-
+/*
     private fun getMessageAlert() {
         val message = intent.getStringExtra(FCM_SERVICE)
 
@@ -51,4 +51,6 @@ class MainActivity : AppCompatActivity() {
                 .setPositiveButton("Ok", DialogInterface.OnClickListener{ _, _ ->  }).show()
         }
     }
+
+ */
 }

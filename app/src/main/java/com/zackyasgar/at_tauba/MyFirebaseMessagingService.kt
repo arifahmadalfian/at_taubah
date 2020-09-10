@@ -1,45 +1,67 @@
 package com.zackyasgar.at_tauba
 
 import android.app.*
+import android.app.NotificationManager.IMPORTANCE_HIGH
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.media.RingtoneManager
 import android.net.Uri
 import android.os.Build
 import android.util.Log
+import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import kotlin.random.Random
 
 class MyFirebaseMessagingService() : FirebaseMessagingService() {
 
     private val TAG = "fcm_service"
-    var NOTIFICATION_CHANNEL_ID = "net.larntech.notification"
-    val NOTIFICATION_ID = 100
+    var NOTIFICATION_CHANNEL_ID = "chanel_id"
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
 
-        Log.e("message","Message Received ...");
+        Log.e("message","Message Received ...")
 
-        if (remoteMessage.data.isNotEmpty()) {
-            val title = remoteMessage.data["title"]
-            val body = remoteMessage.data["body"]
-            showNotification(applicationContext, title, body)
-            showAlert(remoteMessage)
-        } else {
-            val title = remoteMessage.notification?.title
-            val body = remoteMessage.notification?.body
-            showNotification(applicationContext, title, body)
-            showAlert(remoteMessage)
+        val intent: Intent = Intent(this, MainActivity::class.java)
+        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val notificationID = Random.nextInt()
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            createNotificationChannel(notificationManager)
         }
+
+        intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP
+        val pi = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT)
+        val notification = NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID)
+            .setContentTitle(remoteMessage.data["title"])
+            .setContentText(remoteMessage.data["message"])
+            .setSmallIcon(getNotificationIcon())
+            .setAutoCancel(true)
+            .setContentIntent(pi)
+            .build()
+
+        notificationManager.notify(notificationID, notification)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun createNotificationChannel(notificationManager: NotificationManager) {
+        val channelName = "channelName"
+        val channel = NotificationChannel(NOTIFICATION_CHANNEL_ID, channelName, IMPORTANCE_HIGH).apply {
+            description = "My channel desc"
+            enableLights(true)
+            lightColor = Color.GREEN
+        }
+        notificationManager.createNotificationChannel(channel)
     }
 
     override fun onNewToken(p0: String) {
         super.onNewToken(p0)
         Log.e("token","New Token")
     }
-
+/*
     fun showAlert(remoteMessage: RemoteMessage) {
 
         //menambahkan alert dialog atau popUp di MainActiviti ketika ada notifikasi
@@ -53,18 +75,19 @@ class MyFirebaseMessagingService() : FirebaseMessagingService() {
         startActivity(intent)
     }
 
+
+
     fun showNotification(
         context: Context,
         title: String?,
         message: String?
     ) {
-        val ii: Intent
-        ii = Intent(context, MainActivity::class.java)
-        ii.data = Uri.parse("custom://" + System.currentTimeMillis())
-        ii.action = "actionstring" + System.currentTimeMillis()
-        ii.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP
-        val pi =
-            PendingIntent.getActivity(context, 0, ii, PendingIntent.FLAG_UPDATE_CURRENT)
+        val intent: Intent = Intent(context, MainActivity::class.java)
+        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val notificationID = Random.nextInt()
+
+        intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP
+        val pi = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
         val notification: Notification
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             //Log.e("Notification", "Created in up to orio OS device");
@@ -79,6 +102,7 @@ class MyFirebaseMessagingService() : FirebaseMessagingService() {
                 .setWhen(System.currentTimeMillis())
                 .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
                 .setContentTitle(title).build()
+
             val notificationManager = context.getSystemService(
                 Context.NOTIFICATION_SERVICE
             ) as NotificationManager
@@ -105,10 +129,14 @@ class MyFirebaseMessagingService() : FirebaseMessagingService() {
         }
     }
 
+
+ */
     private fun getNotificationIcon(): Int {
         val useWhiteIcon =
             Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP
         return if (useWhiteIcon) R.mipmap.ic_launcher else R.mipmap.ic_launcher
     }
+
+
 
 }

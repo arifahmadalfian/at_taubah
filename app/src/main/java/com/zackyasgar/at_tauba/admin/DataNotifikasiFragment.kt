@@ -1,19 +1,25 @@
 package com.zackyasgar.at_tauba.admin
 
-import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.auth.FirebaseAuth.getInstance
-import com.zackyasgar.at_tauba.LoginActivity
+import com.google.firebase.messaging.FirebaseMessaging
+import com.google.gson.Gson
 import com.zackyasgar.at_tauba.R
+import com.zackyasgar.at_tauba.RetrofitInstance
+import com.zackyasgar.at_tauba.model.NotifikasiData
+import com.zackyasgar.at_tauba.model.PushNotifikasi
 import kotlinx.android.synthetic.main.fragment_data_notifikasi.*
-import kotlinx.android.synthetic.main.fragment_data_pengurus.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
+const val TOPIC = "/topic/myTopic"
 
 class DataNotifikasiFragment : Fragment(), View.OnClickListener {
 
@@ -22,14 +28,28 @@ class DataNotifikasiFragment : Fragment(), View.OnClickListener {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        FirebaseMessaging.getInstance().subscribeToTopic(TOPIC)
         return inflater.inflate(R.layout.fragment_data_notifikasi, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+
         btn_notifikasi_tambah.setOnClickListener(this)
 
+    }
+
+    private fun sendNotifikasi(notifikasi: PushNotifikasi) = CoroutineScope(Dispatchers.IO).launch {
+        try {
+            val response = RetrofitInstance.api.postNotivication(notifikasi)
+            if(response.isSuccessful) {
+                Log.d("DataNotifikasiFragment", "Response: ${Gson().toJson(response)}")
+            }
+        } catch (e: Exception) {
+            Log.e("DataNotifikasiFragment", e.toString())
+        }
     }
 
     override fun onClick(v: View?) {
@@ -58,6 +78,7 @@ class DataNotifikasiFragment : Fragment(), View.OnClickListener {
         pg_notifikasi.visibility = View.VISIBLE
 
         //inisialisasi FirebaseFirestore
+        //untuk menambahkan data ke FirestoreDatabase
         val db = FirebaseFirestore.getInstance()
 
         val notifikasi = hashMapOf(
@@ -80,6 +101,14 @@ class DataNotifikasiFragment : Fragment(), View.OnClickListener {
                 pg_notifikasi.visibility = View.GONE
                 Toast.makeText(context, "Gagal menambahkan data", Toast.LENGTH_SHORT).show()
             }
+
+        //Untuk mengirim notifikasi ke aplikasi
+        PushNotifikasi(
+            NotifikasiData(pTitle, pDeskripsi),
+            TOPIC
+        ).also {
+            sendNotifikasi(it)
+        }
     }
 
 }
