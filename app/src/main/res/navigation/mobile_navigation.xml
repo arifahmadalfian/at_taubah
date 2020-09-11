@@ -22,7 +22,6 @@
         android:name="com.zackyasgar.at_tauba.ui.masjid.MasjidFragment"
         android:label="@string/title_masjid"
         tools:layout="@layout/fragment_masjid" />
-
     <navigation android:id="@+id/navigation"
         app:startDestination="@id/loginActivity">
         <activity

@@ -33,10 +33,7 @@
 
         <service
             android:name=".MyFirebaseMessagingService"
-            android:permission="com.google.android.c2dm.permission.SEND"
-            android:directBootAware="true"
-            android:exported="false"
-            tools:targetApi="n">
+            android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />

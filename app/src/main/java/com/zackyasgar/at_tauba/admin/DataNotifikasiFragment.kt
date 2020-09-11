@@ -19,24 +19,25 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-const val TOPIC = "/topic/myTopic"
-
 class DataNotifikasiFragment : Fragment(), View.OnClickListener {
+
+    companion object {
+        const val TOPIC = "/topics/myTopic"
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        FirebaseMessaging.getInstance().subscribeToTopic(TOPIC)
+
         return inflater.inflate(R.layout.fragment_data_notifikasi, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
+        FirebaseMessaging.getInstance().subscribeToTopic(Companion.TOPIC)
         btn_notifikasi_tambah.setOnClickListener(this)
 
     }
@@ -64,7 +65,6 @@ class DataNotifikasiFragment : Fragment(), View.OnClickListener {
         // mengambil text dari fragment_data_notifikasi yang sudah di isi
         val pTitle =et_notifikasi_title.text.toString()
         val pDeskripsi = et_notifikasi_deskripsi.text.toString()
-
 
         when {
             pTitle.isEmpty() -> et_notifikasi_title.error = "Title tidak boleh kosong"
@@ -105,7 +105,7 @@ class DataNotifikasiFragment : Fragment(), View.OnClickListener {
         //Untuk mengirim notifikasi ke aplikasi
         PushNotifikasi(
             NotifikasiData(pTitle, pDeskripsi),
-            TOPIC
+            Companion.TOPIC
         ).also {
             sendNotifikasi(it)
         }
