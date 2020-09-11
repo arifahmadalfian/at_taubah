@@ -29,5 +29,6 @@
     <fragment
         android:id="@+id/navigation_admin_notifikasi"
         android:name="com.zackyasgar.at_tauba.admin.DataNotifikasiFragment"
-        android:label="DataNotifikasiFragment" />
+        android:label="fragment_data_notifikasi"
+        tools:layout="@layout/fragment_data_notifikasi" />
 </navigation>
