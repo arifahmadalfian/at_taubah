@@ -16,7 +16,7 @@
 
     <style name="AppThemeSplashScreen" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorWhite</item>
-        <item name="colorPrimaryDark">#000000</item>
+        <item name="colorPrimaryDark">#7CFFFFFF</item>
         <item name="colorAccent">@color/colorWhite</item>
     </style>
 

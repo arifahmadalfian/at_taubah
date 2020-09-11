@@ -1,6 +1,8 @@
 package com.zackyasgar.at_tauba.admin
 
+import android.content.Context
 import android.os.Bundle
+import android.text.format.DateFormat
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -18,6 +20,7 @@ import kotlinx.android.synthetic.main.fragment_data_notifikasi.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.*
 
 class DataNotifikasiFragment : Fragment(), View.OnClickListener {
 
@@ -65,15 +68,41 @@ class DataNotifikasiFragment : Fragment(), View.OnClickListener {
         // mengambil text dari fragment_data_notifikasi yang sudah di isi
         val pTitle =et_notifikasi_title.text.toString()
         val pDeskripsi = et_notifikasi_deskripsi.text.toString()
+        val pTanggal = getTanggal()
+        val pJam = getJam()
 
         when {
             pTitle.isEmpty() -> et_notifikasi_title.error = "Title tidak boleh kosong"
             pDeskripsi.isEmpty() -> et_notifikasi_deskripsi.error = "Deskripsi tidak boleh kosong"
-            else ->  getPushNotifikasi(pTitle, pDeskripsi)
+            else ->  getPushNotifikasi(pTitle, pDeskripsi, pTanggal, pJam)
         }
     }
 
-    private fun getPushNotifikasi(pTitle: String, pDeskripsi: String) {
+    private fun getJam(): String {
+        val calendar = Calendar.getInstance()
+        val jam = calendar.get(Calendar.HOUR_OF_DAY)
+        val menit = calendar.get(Calendar.MINUTE)
+
+        DateFormat.is24HourFormat(context as Context)
+
+        return "$jam:$menit"
+    }
+
+    private fun getTanggal(): String {
+        val calendar = Calendar.getInstance()
+        val tahun = calendar.get(Calendar.YEAR)
+        val bulan = calendar.get(Calendar.MONTH)
+        val hari = calendar.get(Calendar.DAY_OF_MONTH)
+
+        return "$tahun/$bulan/$hari"
+    }
+
+    private fun getPushNotifikasi(
+        pTitle: String,
+        pMessage: String,
+        pTanggal: String,
+        pJam: String
+    ) {
         // menampilkan progress bar
         pg_notifikasi.visibility = View.VISIBLE
 
@@ -83,7 +112,9 @@ class DataNotifikasiFragment : Fragment(), View.OnClickListener {
 
         val notifikasi = hashMapOf(
             "title" to pTitle,
-            "deskripsi" to pDeskripsi
+            "message" to pMessage,
+            "tanggal" to pTanggal,
+            "jam" to pJam
         )
 
         db.collection("notifikasi")
@@ -104,7 +135,7 @@ class DataNotifikasiFragment : Fragment(), View.OnClickListener {
 
         //Untuk mengirim notifikasi ke aplikasi
         PushNotifikasi(
-            NotifikasiData(pTitle, pDeskripsi),
+            NotifikasiData(pTitle, pMessage),
             Companion.TOPIC
         ).also {
             sendNotifikasi(it)

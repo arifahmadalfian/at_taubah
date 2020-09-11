@@ -37,7 +37,7 @@ class MyFirebaseMessagingService() : FirebaseMessagingService() {
         }
 
         intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP
-        val pi = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT)
+        val pi = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
         val notification = NotificationCompat.Builder(this,CHANNEL_ID)
             .setContentTitle(remoteMessage.data["title"])
             .setContentText(remoteMessage.data["message"])
