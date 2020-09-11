@@ -9,8 +9,9 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_notifications"
-        android:paddingStart="4dp"
-        android:paddingEnd="4dp"
+        android:paddingTop="2dp"
+        android:paddingStart="2dp"
+        android:paddingEnd="2dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:listitem="@layout/items_row_notifications"
