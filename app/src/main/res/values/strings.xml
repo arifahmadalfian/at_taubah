@@ -70,5 +70,6 @@
     <string name="title">Title</string>
     <string name="deskripsi">Deskripsi</string>
     <string name="kirim">Kirim</string>
+    <string name="message">Message</string>
 
 </resources>
