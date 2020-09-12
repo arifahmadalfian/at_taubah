@@ -7,80 +7,88 @@
     android:layout_height="wrap_content"
     android:layout_margin="1dp">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/CardView"
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_notifications"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="6dp"
-        app:cardElevation="2dp"
-        app:cardMaxElevation="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.cardview.widget.CardView
+            android:id="@+id/CardView"
             android:layout_width="match_parent"
-            android:layout_height="88dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="1dp">
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="6dp"
+            app:cardElevation="2dp"
+            app:cardMaxElevation="1dp">
 
-            <ImageView
-                android:id="@+id/img_view"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:src="@drawable/ic_baseline_notifications_24"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/guideline"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <LinearLayout
-                android:id="@+id/ll_desc"
-                android:layout_width="0dp"
-                android:layout_height="80dp"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/guideline"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="1dp">
 
-                <TextView
-                    android:id="@+id/tv_notifications_title"
-                    style="@style/StyleText"
-                    android:layout_width="match_parent"
+                <ImageView
+                    android:id="@+id/img_notifications"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/bg_shimmer"
+                    android:contentDescription="@string/app_name"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/guideline"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/ll_desc"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/guideline"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/tv_notifications_title"
+                        style="@style/StyleText"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/textInputLayout"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:background="@drawable/bg_shimmer"/>
+
+                    <TextView
+                        android:id="@+id/tv_notifications_message"
+                        style="@style/StyleText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="1dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textColor="@color/textLayout"
+                        android:textSize="12sp"
+                        android:background="@drawable/bg_shimmer"/>
+
+                </LinearLayout>
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/title"
-                    android:textColor="@color/textInputLayout"
-                    android:textSize="30sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tv_notifications_message"
-                    style="@style/StyleText"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:text="@string/message"
-                    android:textColor="@color/textLayout"
-                    android:textSize="24sp" />
-
-            </LinearLayout>
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_begin="96dp" />
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="48dp" />
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
+    </com.facebook.shimmer.ShimmerFrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

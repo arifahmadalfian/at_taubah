@@ -6,6 +6,7 @@
     <color name="colorTextUtama">#2b2b2b</color>
     <color name="colorTextAccent">#aaaaaa</color>
     <color name="colorBackground">#e5e7f3</color>
+    <color name="colorShimmer">#dddddd</color>
 
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorDarkSemiTransparent">#C6000000</color>
