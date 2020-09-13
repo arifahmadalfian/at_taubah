@@ -55,12 +55,12 @@
                 <TextView
                     android:id="@+id/tv_pengajian_tanggal"
                     style="@style/StyleText"
-                    android:layout_width="70dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="1dp"
                     android:layout_marginBottom="10dp"
-                    android:background="@drawable/bg_shimmer"
+                    android:text="@string/tanggal"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/tv_items_pengajian_tanggal"
                     app:layout_constraintStart_toStartOf="parent"
@@ -69,7 +69,7 @@
                 <TextView
                     android:id="@+id/tv_items_pengajian_tanggal"
                     style="@style/StyleText"
-                    android:layout_width="70dp"
+                    android:layout_width="75dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="1dp"
                     android:layout_marginTop="1dp"
@@ -82,10 +82,10 @@
                 <TextView
                     android:id="@+id/tv_pengajian_jam"
                     style="@style/StyleText"
-                    android:layout_width="50dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="1dp"
-                    android:background="@drawable/bg_shimmer"
+                    android:text="@string/jam"
                     app:layout_constraintStart_toEndOf="@+id/tv_items_pengajian_tanggal"
                     app:layout_constraintEnd_toStartOf="@+id/tv_items_pengajian_jam"
                     app:layout_constraintTop_toBottomOf="@+id/tv_items_pengajian_judul" />

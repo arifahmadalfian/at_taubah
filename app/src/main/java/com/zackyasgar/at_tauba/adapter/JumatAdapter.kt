@@ -20,25 +20,19 @@ class JumatAdapter(var jumat: List<Jumat>,var context: Context?) : RecyclerView.
 
         var shimmerFrameLayout: ShimmerFrameLayout = itemView.findViewById(R.id.shimmer_jumatan)
         var imam: TextView = itemView.findViewById(R.id.tv_items_jumatan_imam)
-        var tgl: TextView = itemView.findViewById(R.id.tv_jumat_tanggal)
         var tanggal: TextView = itemView.findViewById(R.id.tv_items_jumatan_tanggal)
-        var jm: TextView = itemView.findViewById(R.id.tv_jumat_jam)
         var jam: TextView = itemView.findViewById(R.id.tv_items_jumatan_jam)
         var images: ImageView = itemView.findViewById(R.id.img_jumat)
 
         @SuppressLint("UseCompatLoadingForDrawables")
         fun bind(jumat: Jumat){
             imam.background = null
-            tgl.background = null
             tanggal.background = null
-            jm.background = null
             jam.background = null
             images.background = null
 
             imam.text = jumat.imam
-            tgl.text = R.string.tanggal.toString()
             tanggal.text = jumat.tanggal
-            jm.text = R.string.jam.toString()
             jam.text = jumat.jam
             images.setImageDrawable(context?.getDrawable(R.drawable.jumat))
         }

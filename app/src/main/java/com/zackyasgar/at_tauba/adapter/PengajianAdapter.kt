@@ -21,25 +21,19 @@ class PengajianAdapter(var pengajianListItems: List<Pengajian>, var context: Con
 
         var shimmerFrameLayout: ShimmerFrameLayout = itemView.findViewById(R.id.shimmer_pengajian)
         var judul: TextView = itemView.findViewById(R.id.tv_items_pengajian_judul)
-        var tgl: TextView = itemView.findViewById(R.id.tv_pengajian_tanggal)
         var tanggal: TextView = itemView.findViewById(R.id.tv_items_pengajian_tanggal)
-        var jm: TextView = itemView.findViewById(R.id.tv_pengajian_jam)
         var jam: TextView = itemView.findViewById(R.id.tv_items_pengajian_jam)
         var images: ImageView = itemView.findViewById(R.id.img_pengajian)
 
         @SuppressLint("UseCompatLoadingForDrawables")
         fun bind(pengajian: Pengajian) {
             judul.background = null
-            tgl.background = null
             tanggal.background = null
-            jm.background = null
             jam.background = null
             images.background = null
 
             judul.text = pengajian.judulPengajian
-            tgl.text = R.string.tanggal.toString()
             tanggal.text = pengajian.tanggalPengajian
-            jm.text = R.string.jam.toString()
             jam.text = pengajian.jamPengajian
             images.setImageDrawable(context?.getDrawable(R.drawable.ngaji))
         }
