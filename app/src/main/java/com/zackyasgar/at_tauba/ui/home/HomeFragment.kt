@@ -1,10 +1,12 @@
 package com.zackyasgar.at_tauba.ui.home
 
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -27,16 +29,16 @@ class HomeFragment : Fragment(){
     var recyclerView: RecyclerView? = null
 
     var pengajianAdapter: PengajianAdapter? = null
-    lateinit var listPengajian: MutableList<Pengajian>
+    var listPengajian: MutableList<Pengajian> = ArrayList()
 
     var jumatAdapter: JumatAdapter? = null
-    lateinit var listJumat: MutableList<Jumat>
+    var listJumat: MutableList<Jumat> = ArrayList()
 
     var kegiatanAdapter: KegiatanAdapter? = null
-    lateinit var listKegiatan: MutableList<Kegiatan>
+    var listKegiatan: MutableList<Kegiatan> = ArrayList()
 
     var pengurusAdapter: PengurusAdapter? = null
-    lateinit var listPengurus: MutableList<Pengurus>
+    var listPengurus: MutableList<Pengurus> = ArrayList()
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -44,15 +46,45 @@ class HomeFragment : Fragment(){
             savedInstanceState: Bundle?
     ): View? {
         v = inflater.inflate(R.layout.fragment_home, container, false)
+
+        // recycler pengajian
+        recyclerView = v?.findViewById(R.id.rv_pengajian)
+        pengajianAdapter = PengajianAdapter(listPengajian, context)
+        recyclerView?.adapter = pengajianAdapter
+        recyclerView?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+
+        //recycler jumatan
+        recyclerView = v?.findViewById(R.id.rv_jumatan)
+        jumatAdapter = JumatAdapter(listJumat, context)
+        recyclerView?.adapter = jumatAdapter
+        recyclerView?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+
+        //recycler kegiatan
+        recyclerView = v?.findViewById(R.id.rv_kegiatan)
+        kegiatanAdapter = KegiatanAdapter(listKegiatan)
+        recyclerView?.adapter = kegiatanAdapter
+        recyclerView?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+
+        //recycler pengurus
+        recyclerView = v?.findViewById(R.id.rv_pengurus)
+        pengurusAdapter = PengurusAdapter(listPengurus)
+        recyclerView?.adapter = pengurusAdapter
+        recyclerView?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+
         return v
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        getPengajian()
-        getJumatan()
-        getKegiatan()
-        getPengurus()
+
+        Handler().postDelayed(object : Runnable {
+            override fun run() {
+                getPengajian()
+                getJumatan()
+                getKegiatan()
+                getPengurus()
+            }
+        }, 2000)
     }
 
     private fun getPengurus() {
@@ -60,18 +92,12 @@ class HomeFragment : Fragment(){
             .orderBy("umur", Query.Direction.DESCENDING)
             .get()
             .addOnSuccessListener { result ->
-                listPengurus = ArrayList()
                 for (i in result){
                     listPengurus.add(Pengurus(
                         "${i.data["pengurus"]}",
                         "${i.data["jabatan"]}",
                         "${i.data["umur"]}"))
                 }
-                recyclerView = v?.findViewById(R.id.rv_pengurus)
-                pengurusAdapter = PengurusAdapter(listPengurus)
-                recyclerView?.adapter = pengurusAdapter
-                recyclerView?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-
             }
             .addOnFailureListener { exception ->
                 Log.w("failureCoy", "Error getting documents.", exception)
@@ -83,7 +109,6 @@ class HomeFragment : Fragment(){
             .orderBy("tanggal", Query.Direction.DESCENDING)
             .get()
             .addOnSuccessListener { result ->
-                listKegiatan = ArrayList()
                 for (i in result){
                     listKegiatan.add(Kegiatan(
                         "${i.data["judul"]}",
@@ -91,11 +116,6 @@ class HomeFragment : Fragment(){
                         "${i.data["jam"]}",
                         "${i.data["isi"]}"))
                 }
-                recyclerView = v?.findViewById(R.id.rv_kegiatan)
-                kegiatanAdapter = KegiatanAdapter(listKegiatan)
-                recyclerView?.adapter = kegiatanAdapter
-                recyclerView?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-
             }
             .addOnFailureListener { exception ->
                 Log.w("failureCoy", "Error getting documents.", exception)
@@ -107,7 +127,6 @@ class HomeFragment : Fragment(){
             .orderBy("Tanggal", Query.Direction.DESCENDING)
             .get()
             .addOnSuccessListener { result ->
-                listPengajian = ArrayList()
                 for (i in result){
                     listPengajian.add(Pengajian(
                         "${i.data["Tema"]}",
@@ -116,14 +135,13 @@ class HomeFragment : Fragment(){
                         "${i.data["Jam"]}",
                         "${i.data["Isi"]}"))
                 }
-                recyclerView = v?.findViewById(R.id.rv_pengajian)
-                pengajianAdapter = PengajianAdapter(listPengajian)
-                recyclerView?.adapter = pengajianAdapter
-                recyclerView?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-
+                //menutup shimmer
+                pengajianAdapter?.showShimmer = false
+                pengajianAdapter?.notifyDataSetChanged()
             }
             .addOnFailureListener { exception ->
                 Log.w("failureCoy", "Error getting documents.", exception)
+                Toast.makeText(activity, "Tidak terhubung internet", Toast.LENGTH_SHORT).show()
             }
     }
 
@@ -132,7 +150,6 @@ class HomeFragment : Fragment(){
             .orderBy("tanggal", Query.Direction.DESCENDING)
             .get()
             .addOnSuccessListener { result ->
-                listJumat = ArrayList()
                 for (i in result){
                     listJumat.add(Jumat("${i.data["imam"]}",
                         "${i.data["muadzin"]}",
@@ -140,14 +157,13 @@ class HomeFragment : Fragment(){
                         "${i.data["jam"]}",
                         "${i.data["isi_khutbah"]}"))
                 }
-                recyclerView = v?.findViewById(R.id.rv_jumatan)
-                jumatAdapter = JumatAdapter(listJumat)
-                recyclerView?.adapter = jumatAdapter
-                recyclerView?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-
+                //menutup shimmer
+                jumatAdapter?.showShimmer = false
+                jumatAdapter?.notifyDataSetChanged()
             }
             .addOnFailureListener { exception ->
                 Log.w("failureCoy", "Error getting documents.", exception)
+                Toast.makeText(activity, "Tidak terhubung internet", Toast.LENGTH_SHORT).show()
             }
     }
 

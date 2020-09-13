@@ -1,26 +1,46 @@
 package com.zackyasgar.at_tauba.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.facebook.shimmer.ShimmerFrameLayout
 import com.zackyasgar.at_tauba.R
 import com.zackyasgar.at_tauba.model.Jumat
 
-class JumatAdapter(var jumat: List<Jumat>) : RecyclerView.Adapter<JumatAdapter.JumatHolder>(){
+class JumatAdapter(var jumat: List<Jumat>,var context: Context?) : RecyclerView.Adapter<JumatAdapter.JumatHolder>(){
 
-    class JumatHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    var showShimmer = true
 
+    inner class JumatHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+
+        var shimmerFrameLayout: ShimmerFrameLayout = itemView.findViewById(R.id.shimmer_jumatan)
         var imam: TextView = itemView.findViewById(R.id.tv_items_jumatan_imam)
+        var tgl: TextView = itemView.findViewById(R.id.tv_jumat_tanggal)
         var tanggal: TextView = itemView.findViewById(R.id.tv_items_jumatan_tanggal)
+        var jm: TextView = itemView.findViewById(R.id.tv_jumat_jam)
         var jam: TextView = itemView.findViewById(R.id.tv_items_jumatan_jam)
+        var images: ImageView = itemView.findViewById(R.id.img_jumat)
 
-        fun initialize(jumat: Jumat){
+        @SuppressLint("UseCompatLoadingForDrawables")
+        fun bind(jumat: Jumat){
+            imam.background = null
+            tgl.background = null
+            tanggal.background = null
+            jm.background = null
+            jam.background = null
+            images.background = null
+
             imam.text = jumat.imam
+            tgl.text = R.string.tanggal.toString()
             tanggal.text = jumat.tanggal
+            jm.text = R.string.jam.toString()
             jam.text = jumat.jam
+            images.setImageDrawable(context?.getDrawable(R.drawable.jumat))
         }
     }
 
@@ -31,11 +51,21 @@ class JumatAdapter(var jumat: List<Jumat>) : RecyclerView.Adapter<JumatAdapter.J
     }
 
     override fun onBindViewHolder(holder: JumatHolder, position: Int) {
-        holder.initialize(jumat[position])
+        //menampilkan shimmer
+        if (showShimmer) {
+            holder.shimmerFrameLayout.startShimmer()
+        } else {
+            //menghntikan shimmer dan mencopot background di textView dan imageView
+            holder.shimmerFrameLayout.stopShimmer()
+            holder.shimmerFrameLayout.setShimmer(null)
+
+            holder.bind(jumat[position])
+        }
     }
 
     override fun getItemCount(): Int {
-        return jumat.size
+        val SHIMMER_ITEM_NUMBER = 4
+        return if (showShimmer) SHIMMER_ITEM_NUMBER else jumat.size
     }
 
 }

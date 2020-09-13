@@ -1,41 +1,71 @@
 package com.zackyasgar.at_tauba.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.facebook.shimmer.ShimmerFrameLayout
 import com.zackyasgar.at_tauba.R
 import com.zackyasgar.at_tauba.model.Pengajian
 import kotlinx.android.synthetic.main.items_row_pengajian.view.*
 
-class PengajianAdapter(var pengajianListItems: List<Pengajian>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class PengajianAdapter(var pengajianListItems: List<Pengajian>, var context: Context?): RecyclerView.Adapter<PengajianAdapter.PengajianViewHolder>() {
 
-    class PengajianViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    var showShimmer = true
 
+    inner class PengajianViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+
+        var shimmerFrameLayout: ShimmerFrameLayout = itemView.findViewById(R.id.shimmer_pengajian)
         var judul: TextView = itemView.findViewById(R.id.tv_items_pengajian_judul)
+        var tgl: TextView = itemView.findViewById(R.id.tv_pengajian_tanggal)
         var tanggal: TextView = itemView.findViewById(R.id.tv_items_pengajian_tanggal)
+        var jm: TextView = itemView.findViewById(R.id.tv_pengajian_jam)
         var jam: TextView = itemView.findViewById(R.id.tv_items_pengajian_jam)
+        var images: ImageView = itemView.findViewById(R.id.img_pengajian)
 
+        @SuppressLint("UseCompatLoadingForDrawables")
         fun bind(pengajian: Pengajian) {
-            judul.text = pengajian.temaPengajian
+            judul.background = null
+            tgl.background = null
+            tanggal.background = null
+            jm.background = null
+            jam.background = null
+            images.background = null
+
+            judul.text = pengajian.judulPengajian
+            tgl.text = R.string.tanggal.toString()
             tanggal.text = pengajian.tanggalPengajian
+            jm.text = R.string.jam.toString()
             jam.text = pengajian.jamPengajian
+            images.setImageDrawable(context?.getDrawable(R.drawable.ngaji))
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PengajianViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.items_row_pengajian, parent, false)
         return PengajianViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as PengajianViewHolder).bind(pengajianListItems[position])
+    override fun onBindViewHolder(holder: PengajianViewHolder, position: Int) {
+        //menampilkan shimmer
+        if (showShimmer) {
+            holder.shimmerFrameLayout.startShimmer()
+        } else {
+            //menghntikan shimmer dan mencopot background di textView dan imageView
+            holder.shimmerFrameLayout.stopShimmer()
+            holder.shimmerFrameLayout.setShimmer(null)
+
+            holder.bind(pengajianListItems[position])
+        }
     }
 
     override fun getItemCount(): Int {
-        return pengajianListItems.size
+        val SHIMMER_ITEM_NUMBER = 4
+        return if (showShimmer) SHIMMER_ITEM_NUMBER else pengajianListItems.size
     }
 
 }

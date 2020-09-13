@@ -15,82 +15,95 @@
         app:cardElevation="4dp"
         app:cardUseCompatPadding="true">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer_pengajian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="330dp"
-                android:layout_height="130dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ngaji"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/tv_items_pengajian_judul"
-                tools:ignore="ContentDescription" />
-
-            <TextView
-                android:id="@+id/tv_items_pengajian_judul"
-                style="@style/StyleText"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:text="@string/judul_pengajian"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/tv_items_pengajian_tanggal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/TextView11"
-                style="@style/StyleText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginBottom="10dp"
-                android:text="@string/tanggal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/tv_items_pengajian_tanggal"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_items_pengajian_judul" />
+                <ImageView
+                    android:id="@+id/img_pengajian"
+                    android:layout_width="330dp"
+                    android:layout_height="130dp"
+                    android:background="@drawable/bg_shimmer"
+                    android:contentDescription="@string/app_name"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_items_pengajian_judul"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tv_items_pengajian_tanggal"
-                style="@style/StyleText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="10dp"
-                android:text="@string/tanggal"
-                app:layout_constraintEnd_toStartOf="@+id/TextView2"
-                app:layout_constraintStart_toEndOf="@+id/TextView11"
-                app:layout_constraintTop_toBottomOf="@+id/tv_items_pengajian_judul" />
+                <TextView
+                    android:id="@+id/tv_items_pengajian_judul"
+                    style="@style/StyleText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/bg_shimmer"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_items_pengajian_tanggal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/img_pengajian" />
 
-            <TextView
-                android:id="@+id/TextView2"
-                style="@style/StyleText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/jam"
-                app:layout_constraintStart_toEndOf="@+id/tv_items_pengajian_tanggal"
-                app:layout_constraintEnd_toStartOf="@+id/tv_items_pengajian_jam"
-                app:layout_constraintTop_toBottomOf="@+id/tv_items_pengajian_judul" />
+                <TextView
+                    android:id="@+id/tv_pengajian_tanggal"
+                    style="@style/StyleText"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/bg_shimmer"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_items_pengajian_tanggal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_items_pengajian_judul" />
 
-            <TextView
-                android:id="@+id/tv_items_pengajian_jam"
-                style="@style/StyleText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:text="@string/jam"
-                app:layout_constraintStart_toEndOf="@+id/TextView2"
-                app:layout_constraintTop_toBottomOf="@+id/tv_items_pengajian_judul" />
+                <TextView
+                    android:id="@+id/tv_items_pengajian_tanggal"
+                    style="@style/StyleText"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/bg_shimmer"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_pengajian_jam"
+                    app:layout_constraintStart_toEndOf="@+id/tv_pengajian_tanggal"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_items_pengajian_judul" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/tv_pengajian_jam"
+                    style="@style/StyleText"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:background="@drawable/bg_shimmer"
+                    app:layout_constraintStart_toEndOf="@+id/tv_items_pengajian_tanggal"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_items_pengajian_jam"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_items_pengajian_judul" />
+
+                <TextView
+                    android:id="@+id/tv_items_pengajian_jam"
+                    style="@style/StyleText"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@drawable/bg_shimmer"
+                    app:layout_constraintStart_toEndOf="@+id/tv_pengajian_jam"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_items_pengajian_judul" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
 
     </androidx.cardview.widget.CardView>
 

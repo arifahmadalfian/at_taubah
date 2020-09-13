@@ -15,8 +15,6 @@ import com.google.firebase.firestore.Query
 import com.zackyasgar.at_tauba.R
 import com.zackyasgar.at_tauba.adapter.NotificationsAdapter
 import com.zackyasgar.at_tauba.model.NotifikasiData
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 
 class NotificationsFragment : Fragment() {

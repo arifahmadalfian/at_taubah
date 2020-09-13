@@ -56,7 +56,7 @@ class NotificationsAdapter(var notifications: List<NotifikasiData>,var context: 
     }
 
     override fun getItemCount(): Int {
-        val SHIMMER_ITEM_NUMBER = 20
+        val SHIMMER_ITEM_NUMBER = 16
         return if (showShimmer) SHIMMER_ITEM_NUMBER else notifications.size
     }
 }
