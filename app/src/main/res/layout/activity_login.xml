@@ -16,7 +16,7 @@
         app:layout_constraintBottom_toTopOf="@id/textview6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></LinearLayout>
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/textview6"
@@ -51,6 +51,7 @@
             android:layout_height="match_parent"
             app:cardCornerRadius="10dp"
             app:cardElevation="4dp"
+            app:cardBackgroundColor="@color/colorWhite"
             app:cardUseCompatPadding="true"
             tools:ignore="MissingConstraints">
 

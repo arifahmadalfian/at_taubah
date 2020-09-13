@@ -12,7 +12,8 @@
         android:layout_height="wrap_content"
         app:cardCornerRadius="6dp"
         app:cardMaxElevation="2dp"
-        app:cardElevation="4dp"
+        app:cardElevation="2dp"
+        app:cardBackgroundColor="@color/colorWhite"
         app:cardUseCompatPadding="true">
 
         <com.facebook.shimmer.ShimmerFrameLayout
