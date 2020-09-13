@@ -61,13 +61,13 @@ class HomeFragment : Fragment(){
 
         //recycler kegiatan
         recyclerView = v?.findViewById(R.id.rv_kegiatan)
-        kegiatanAdapter = KegiatanAdapter(listKegiatan)
+        kegiatanAdapter = KegiatanAdapter(listKegiatan, context)
         recyclerView?.adapter = kegiatanAdapter
         recyclerView?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 
         //recycler pengurus
         recyclerView = v?.findViewById(R.id.rv_pengurus)
-        pengurusAdapter = PengurusAdapter(listPengurus)
+        pengurusAdapter = PengurusAdapter(listPengurus, context)
         recyclerView?.adapter = pengurusAdapter
         recyclerView?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 
@@ -77,13 +77,11 @@ class HomeFragment : Fragment(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        Handler().postDelayed(object : Runnable {
-            override fun run() {
-                getPengajian()
-                getJumatan()
-                getKegiatan()
-                getPengurus()
-            }
+        Handler().postDelayed({
+            getPengajian()
+            getJumatan()
+            getKegiatan()
+            getPengurus()
         }, 2000)
     }
 
@@ -98,9 +96,12 @@ class HomeFragment : Fragment(){
                         "${i.data["jabatan"]}",
                         "${i.data["umur"]}"))
                 }
+                pengurusAdapter?.showShimmer = false
+                pengurusAdapter?.notifyDataSetChanged()
             }
             .addOnFailureListener { exception ->
                 Log.w("failureCoy", "Error getting documents.", exception)
+                Toast.makeText(activity, "Tidak terhubung internet", Toast.LENGTH_SHORT).show()
             }
     }
 
@@ -116,9 +117,13 @@ class HomeFragment : Fragment(){
                         "${i.data["jam"]}",
                         "${i.data["isi"]}"))
                 }
+                //menutup shimmer effect
+                kegiatanAdapter?.showShimmer = false
+                kegiatanAdapter?.notifyDataSetChanged()
             }
             .addOnFailureListener { exception ->
                 Log.w("failureCoy", "Error getting documents.", exception)
+                Toast.makeText(activity, "Tidak terhubung internet", Toast.LENGTH_SHORT).show()
             }
     }
 

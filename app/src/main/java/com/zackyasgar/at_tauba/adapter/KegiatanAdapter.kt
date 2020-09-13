@@ -1,27 +1,41 @@
 package com.zackyasgar.at_tauba.adapter
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.facebook.shimmer.ShimmerFrameLayout
 import com.zackyasgar.at_tauba.R
 import com.zackyasgar.at_tauba.model.Kegiatan
 
-class KegiatanAdapter(var kegiatan: List<Kegiatan>): RecyclerView.Adapter<KegiatanAdapter.KegiatanHolder>() {
+class KegiatanAdapter(var kegiatan: List<Kegiatan>, var context: Context?): RecyclerView.Adapter<KegiatanAdapter.KegiatanHolder>() {
 
-    class KegiatanHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    var showShimmer = true
 
+    inner class KegiatanHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+
+        var shimmerFrameLayout: ShimmerFrameLayout = itemView.findViewById(R.id.shimmer_kegiatan)
         var judul: TextView = itemView.findViewById(R.id.tv_items_kegiatan_judul)
         var tanggal: TextView = itemView.findViewById(R.id.tv_items_kegiatan_tanggal)
         var jam: TextView = itemView.findViewById(R.id.tv_items_kegiatan_jam)
+        var images: ImageView = itemView.findViewById(R.id.img_kegiatan)
 
+        @SuppressLint("UseCompatLoadingForDrawables")
         fun bind(kegiatan: Kegiatan) {
+            judul.background = null
+            tanggal.background = null
+            jam.background = null
+            images.background = null
+
             judul.text = kegiatan.judul
             tanggal.text = kegiatan.tanggal
             jam.text = kegiatan.jam
+            images.setImageDrawable(context?.getDrawable(R.drawable.kegiatan))
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): KegiatanHolder {
@@ -31,11 +45,20 @@ class KegiatanAdapter(var kegiatan: List<Kegiatan>): RecyclerView.Adapter<Kegiat
     }
 
     override fun onBindViewHolder(holder: KegiatanHolder, position: Int) {
-        holder.bind(kegiatan[position])
+        //menampilkan shimmer effect
+        if (showShimmer) {
+            holder.shimmerFrameLayout.startShimmer()
+        } else {
+            holder.shimmerFrameLayout.stopShimmer()
+            holder.shimmerFrameLayout.setShimmer(null)
+
+            holder.bind(kegiatan[position])
+        }
     }
 
     override fun getItemCount(): Int {
-        return kegiatan.size
+        val SHIMMER_ITEM_NUMBER = 4
+        return if(showShimmer) SHIMMER_ITEM_NUMBER else kegiatan.size
     }
 
 }

@@ -1,25 +1,38 @@
 package com.zackyasgar.at_tauba.adapter
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.facebook.shimmer.ShimmerFrameLayout
 import com.zackyasgar.at_tauba.R
 import com.zackyasgar.at_tauba.model.Pengurus
 
-class PengurusAdapter(var pengurus: List<Pengurus>): RecyclerView.Adapter<PengurusAdapter.PengurusHolder>() {
+class PengurusAdapter(var pengurus: List<Pengurus>, var context: Context?): RecyclerView.Adapter<PengurusAdapter.PengurusHolder>() {
 
-    class PengurusHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    var showShimmer = true
 
+    inner class PengurusHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+
+        var shimmerFrameLayout: ShimmerFrameLayout = itemView.findViewById(R.id.shimmer_pengurus)
         var nama: TextView = itemView.findViewById(R.id.tv_items_pengurus_nama)
         var jabatan: TextView = itemView.findViewById(R.id.tv_items_pengurus_jabatan)
+        var image: ImageView = itemView.findViewById(R.id.img_pengurus)
 
+        @SuppressLint("UseCompatLoadingForDrawables")
         fun bind(pengurus: Pengurus) {
+            nama.background = null
+            jabatan.background = null
+            image.background = null
+
             nama.text = pengurus.nama
             jabatan.text = pengurus.jabatan
+            image.setImageDrawable(context?.getDrawable(R.drawable.dkm))
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PengurusHolder {
@@ -29,11 +42,20 @@ class PengurusAdapter(var pengurus: List<Pengurus>): RecyclerView.Adapter<Pengur
     }
 
     override fun onBindViewHolder(holder: PengurusHolder, position: Int) {
-        holder.bind(pengurus[position])
+        //menampilkan shimmer
+        if (showShimmer) {
+            holder.shimmerFrameLayout.startShimmer()
+        } else {
+            holder.shimmerFrameLayout.stopShimmer()
+            holder.shimmerFrameLayout.setShimmer(null)
+
+            holder.bind(pengurus[position])
+        }
     }
 
     override fun getItemCount(): Int {
-        return pengurus.size
+        val SHIMMER_ITEM_NUMBER = 4
+        return if (showShimmer) SHIMMER_ITEM_NUMBER else pengurus.size
     }
 
 }

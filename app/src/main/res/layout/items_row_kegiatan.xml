@@ -15,82 +15,94 @@
         app:cardElevation="4dp"
         app:cardUseCompatPadding="true">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer_kegiatan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="330dp"
-                android:layout_height="130dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/kegiatan"
-                app:layout_constraintBottom_toTopOf="@+id/tv_items_kegiatan_judul"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="ContentDescription" />
-
-            <TextView
-                android:id="@+id/tv_items_kegiatan_judul"
-                style="@style/StyleText"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="10dp"
-                android:text="@string/kegiatan"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/TextView11"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/TextView11"
-                style="@style/StyleText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginBottom="10dp"
-                android:text="@string/tanggal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/tv_items_kegiatan_tanggal"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_items_kegiatan_judul" />
+                <ImageView
+                    android:id="@+id/img_kegiatan"
+                    android:layout_width="330dp"
+                    android:layout_height="130dp"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="@string/app_name"
+                    android:background="@drawable/bg_shimmer"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_items_kegiatan_judul"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tv_items_kegiatan_tanggal"
-                style="@style/StyleText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="10dp"
-                android:text="@string/tanggal"
-                app:layout_constraintEnd_toStartOf="@+id/TextView2"
-                app:layout_constraintStart_toEndOf="@+id/TextView11"
-                app:layout_constraintTop_toBottomOf="@+id/tv_items_kegiatan_judul" />
+                <TextView
+                    android:id="@+id/tv_items_kegiatan_judul"
+                    style="@style/StyleText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/bg_shimmer"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/TextView11"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/img_kegiatan" />
 
-            <TextView
-                android:id="@+id/TextView2"
-                style="@style/StyleText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/jam"
-                app:layout_constraintStart_toEndOf="@+id/tv_items_kegiatan_tanggal"
-                app:layout_constraintEnd_toStartOf="@+id/tv_items_kegiatan_jam"
-                app:layout_constraintTop_toBottomOf="@+id/tv_items_kegiatan_judul" />
+                <TextView
+                    android:id="@+id/TextView11"
+                    style="@style/StyleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/tanggal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_items_kegiatan_tanggal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_items_kegiatan_judul" />
 
-            <TextView
-                android:id="@+id/tv_items_kegiatan_jam"
-                style="@style/StyleText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:text="@string/jam"
-                app:layout_constraintStart_toEndOf="@+id/TextView2"
-                app:layout_constraintTop_toBottomOf="@+id/tv_items_kegiatan_judul" />
+                <TextView
+                    android:id="@+id/tv_items_kegiatan_tanggal"
+                    style="@style/StyleText"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/bg_shimmer"
+                    app:layout_constraintEnd_toStartOf="@+id/TextView2"
+                    app:layout_constraintStart_toEndOf="@+id/TextView11"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_items_kegiatan_judul" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/TextView2"
+                    style="@style/StyleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:text="@string/jam"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_items_kegiatan_jam"
+                    app:layout_constraintStart_toEndOf="@+id/tv_items_kegiatan_tanggal"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_items_kegiatan_judul" />
+
+                <TextView
+                    android:id="@+id/tv_items_kegiatan_jam"
+                    style="@style/StyleText"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@drawable/bg_shimmer"
+                    app:layout_constraintStart_toEndOf="@+id/TextView2"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_items_kegiatan_judul" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
 
     </androidx.cardview.widget.CardView>
 
