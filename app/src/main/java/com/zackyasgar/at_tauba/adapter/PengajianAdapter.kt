@@ -13,7 +13,9 @@ import com.zackyasgar.at_tauba.R
 import com.zackyasgar.at_tauba.model.Pengajian
 import kotlinx.android.synthetic.main.items_row_pengajian.view.*
 
-class PengajianAdapter(var pengajianListItems: List<Pengajian>, var context: Context?): RecyclerView.Adapter<PengajianAdapter.PengajianViewHolder>() {
+class PengajianAdapter(var pengajianListItems: List<Pengajian>,
+                       var context: Context?,
+                       var clickListener: IOnPengajianItemClickListener): RecyclerView.Adapter<PengajianAdapter.PengajianViewHolder>() {
 
     var showShimmer = true
 
@@ -26,7 +28,7 @@ class PengajianAdapter(var pengajianListItems: List<Pengajian>, var context: Con
         var images: ImageView = itemView.findViewById(R.id.img_pengajian)
 
         @SuppressLint("UseCompatLoadingForDrawables")
-        fun bind(pengajian: Pengajian) {
+        fun bind(pengajian: Pengajian, action: IOnPengajianItemClickListener) {
             judul.background = null
             tanggal.background = null
             jam.background = null
@@ -36,6 +38,10 @@ class PengajianAdapter(var pengajianListItems: List<Pengajian>, var context: Con
             tanggal.text = pengajian.tanggalPengajian
             jam.text = pengajian.jamPengajian
             images.setImageDrawable(context?.getDrawable(R.drawable.ngaji))
+
+            itemView.setOnClickListener{
+                action.onPengajianItemClick(pengajian, adapterPosition)
+            }
         }
     }
 
@@ -53,7 +59,7 @@ class PengajianAdapter(var pengajianListItems: List<Pengajian>, var context: Con
             holder.shimmerFrameLayout.stopShimmer()
             holder.shimmerFrameLayout.setShimmer(null)
 
-            holder.bind(pengajianListItems[position])
+            holder.bind(pengajianListItems[position], clickListener)
         }
     }
 
@@ -62,4 +68,8 @@ class PengajianAdapter(var pengajianListItems: List<Pengajian>, var context: Con
         return if (showShimmer) SHIMMER_ITEM_NUMBER else pengajianListItems.size
     }
 
+}
+
+interface IOnPengajianItemClickListener {
+    fun onPengajianItemClick(item: Pengajian, position: Int)
 }

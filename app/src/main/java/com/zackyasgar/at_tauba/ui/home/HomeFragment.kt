@@ -1,5 +1,6 @@
 package com.zackyasgar.at_tauba.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
@@ -12,17 +13,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import com.zackyasgar.at_tauba.PengajianDetailActivity
 import com.zackyasgar.at_tauba.R
-import com.zackyasgar.at_tauba.adapter.JumatAdapter
-import com.zackyasgar.at_tauba.adapter.KegiatanAdapter
-import com.zackyasgar.at_tauba.adapter.PengajianAdapter
-import com.zackyasgar.at_tauba.adapter.PengurusAdapter
+import com.zackyasgar.at_tauba.adapter.*
 import com.zackyasgar.at_tauba.model.Jumat
 import com.zackyasgar.at_tauba.model.Kegiatan
 import com.zackyasgar.at_tauba.model.Pengajian
 import com.zackyasgar.at_tauba.model.Pengurus
 
-class HomeFragment : Fragment(){
+class HomeFragment : Fragment(), IOnPengajianItemClickListener{
 
     private var db = FirebaseFirestore.getInstance()
     var v: View? = null
@@ -49,7 +48,7 @@ class HomeFragment : Fragment(){
 
         // recycler pengajian
         recyclerView = v?.findViewById(R.id.rv_pengajian)
-        pengajianAdapter = PengajianAdapter(listPengajian, context)
+        pengajianAdapter = PengajianAdapter(listPengajian, context, this)
         recyclerView?.adapter = pengajianAdapter
         recyclerView?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 
@@ -170,6 +169,16 @@ class HomeFragment : Fragment(){
                 Log.w("failureCoy", "Error getting documents.", exception)
                 Toast.makeText(activity, "Tidak terhubung internet", Toast.LENGTH_SHORT).show()
             }
+    }
+
+    override fun onPengajianItemClick(item: Pengajian, position: Int) {
+        val intent = Intent(context, PengajianDetailActivity::class.java)
+        intent.putExtra(PengajianDetailActivity.PENGAJIAN_TEMA, item.temaPengajian)
+        intent.putExtra(PengajianDetailActivity.PENGAJIAN_JUDUL, item.judulPengajian)
+        intent.putExtra(PengajianDetailActivity.PENGAJIAN_TANGGAL, item.tanggalPengajian)
+        intent.putExtra(PengajianDetailActivity.PENGAJIAN_JAM, item.jamPengajian)
+        intent.putExtra(PengajianDetailActivity.PENGAJIAN_ISI, item.isiPengajian)
+        startActivity(intent)
     }
 
 

@@ -48,5 +48,23 @@
 
     </style>
 
+    <style name="StylePrimaryText" parent="@style/TextAppearance.AppCompat.Small">
+        <item name="android:textColor">@color/textInputLayout</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:fontFamily">@font/roboto</item>
+    </style>
+
+    <style name="StylePrimaryTextDark" parent="@style/TextAppearance.AppCompat.Small">
+        <item name="android:textColor">@color/colorTextUtama</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:fontFamily">@font/roboto</item>
+    </style>
+
 
 </resources>
