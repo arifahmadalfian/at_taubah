@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import com.zackyasgar.at_tauba.JumatDetailActivity
 import com.zackyasgar.at_tauba.PengajianDetailActivity
 import com.zackyasgar.at_tauba.R
 import com.zackyasgar.at_tauba.adapter.*
@@ -21,7 +22,7 @@ import com.zackyasgar.at_tauba.model.Kegiatan
 import com.zackyasgar.at_tauba.model.Pengajian
 import com.zackyasgar.at_tauba.model.Pengurus
 
-class HomeFragment : Fragment(), IOnPengajianItemClickListener{
+class HomeFragment : Fragment(), IOnPengajianItemClickListener, IOnJumatanItemClickListener{
 
     private var db = FirebaseFirestore.getInstance()
     var v: View? = null
@@ -54,7 +55,7 @@ class HomeFragment : Fragment(), IOnPengajianItemClickListener{
 
         //recycler jumatan
         recyclerView = v?.findViewById(R.id.rv_jumatan)
-        jumatAdapter = JumatAdapter(listJumat, context)
+        jumatAdapter = JumatAdapter(listJumat, context, this)
         recyclerView?.adapter = jumatAdapter
         recyclerView?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 
@@ -155,7 +156,8 @@ class HomeFragment : Fragment(), IOnPengajianItemClickListener{
             .get()
             .addOnSuccessListener { result ->
                 for (i in result){
-                    listJumat.add(Jumat("${i.data["imam"]}",
+                    listJumat.add(Jumat(
+                        "${i.data["imam"]}",
                         "${i.data["muadzin"]}",
                         "${i.data["tanggal"]}",
                         "${i.data["jam"]}",
@@ -178,6 +180,16 @@ class HomeFragment : Fragment(), IOnPengajianItemClickListener{
         intent.putExtra(PengajianDetailActivity.PENGAJIAN_TANGGAL, item.tanggalPengajian)
         intent.putExtra(PengajianDetailActivity.PENGAJIAN_JAM, item.jamPengajian)
         intent.putExtra(PengajianDetailActivity.PENGAJIAN_ISI, item.isiPengajian)
+        startActivity(intent)
+    }
+
+    override fun onJumatanItemClick(item: Jumat, position: Int) {
+        val intent = Intent(context, JumatDetailActivity::class.java)
+        intent.putExtra(JumatDetailActivity.JUMATAN_KHOTIB, item.imam)
+        intent.putExtra(JumatDetailActivity.JUMATAN_MUADZIN, item.muadzin)
+        intent.putExtra(JumatDetailActivity.JUMATAN_TANGGAL, item.tanggal)
+        intent.putExtra(JumatDetailActivity.JUMATAN_JAM, item.jam)
+        intent.putExtra(JumatDetailActivity.JUMATAN_ISI, item.isi_khutbah)
         startActivity(intent)
     }
 

@@ -11,8 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.zackyasgar.at_tauba.R
 import com.zackyasgar.at_tauba.model.Jumat
+import com.zackyasgar.at_tauba.model.Pengajian
 
-class JumatAdapter(var jumat: List<Jumat>,var context: Context?) : RecyclerView.Adapter<JumatAdapter.JumatHolder>(){
+class JumatAdapter(var jumat: List<Jumat>,
+                   var context: Context?,
+                   var clickListener: IOnJumatanItemClickListener) : RecyclerView.Adapter<JumatAdapter.JumatHolder>(){
 
     var showShimmer = true
 
@@ -25,7 +28,7 @@ class JumatAdapter(var jumat: List<Jumat>,var context: Context?) : RecyclerView.
         var images: ImageView = itemView.findViewById(R.id.img_jumat)
 
         @SuppressLint("UseCompatLoadingForDrawables")
-        fun bind(jumat: Jumat){
+        fun bind(jumat: Jumat, action: IOnJumatanItemClickListener){
             imam.background = null
             tanggal.background = null
             jam.background = null
@@ -35,6 +38,10 @@ class JumatAdapter(var jumat: List<Jumat>,var context: Context?) : RecyclerView.
             tanggal.text = jumat.tanggal
             jam.text = jumat.jam
             images.setImageDrawable(context?.getDrawable(R.drawable.jumat))
+
+            itemView.setOnClickListener {
+                action.onJumatanItemClick(jumat, adapterPosition)
+            }
         }
     }
 
@@ -53,7 +60,7 @@ class JumatAdapter(var jumat: List<Jumat>,var context: Context?) : RecyclerView.
             holder.shimmerFrameLayout.stopShimmer()
             holder.shimmerFrameLayout.setShimmer(null)
 
-            holder.bind(jumat[position])
+            holder.bind(jumat[position], clickListener)
         }
     }
 
@@ -62,4 +69,8 @@ class JumatAdapter(var jumat: List<Jumat>,var context: Context?) : RecyclerView.
         return if (showShimmer) SHIMMER_ITEM_NUMBER else jumat.size
     }
 
+}
+
+interface IOnJumatanItemClickListener {
+    fun onJumatanItemClick(item: Jumat, position: Int)
 }

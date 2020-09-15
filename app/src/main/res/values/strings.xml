@@ -71,8 +71,10 @@
     <string name="deskripsi">Deskripsi</string>
     <string name="kirim">Kirim</string>
     <string name="message">Message</string>
+
     <string name="detail_pengajian">Detail Pengajian</string>
     <string name="tgl">Tanggal</string>
     <string name="jm">Jam</string>
+    <string name="detail_jumat">Detail Jumatan</string>
 
 </resources>
