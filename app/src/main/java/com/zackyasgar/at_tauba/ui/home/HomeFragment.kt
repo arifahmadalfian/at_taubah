@@ -13,16 +13,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
-import com.zackyasgar.at_tauba.JumatDetailActivity
-import com.zackyasgar.at_tauba.PengajianDetailActivity
+import com.zackyasgar.at_tauba.detail.JumatDetailActivity
+import com.zackyasgar.at_tauba.detail.PengajianDetailActivity
 import com.zackyasgar.at_tauba.R
 import com.zackyasgar.at_tauba.adapter.*
+import com.zackyasgar.at_tauba.detail.KegiatanDetailActivity
 import com.zackyasgar.at_tauba.model.Jumat
 import com.zackyasgar.at_tauba.model.Kegiatan
 import com.zackyasgar.at_tauba.model.Pengajian
 import com.zackyasgar.at_tauba.model.Pengurus
 
-class HomeFragment : Fragment(), IOnPengajianItemClickListener, IOnJumatanItemClickListener{
+class HomeFragment : Fragment(), IOnPengajianItemClickListener, IOnJumatanItemClickListener, IOnKegiatanItemClickListener{
 
     private var db = FirebaseFirestore.getInstance()
     var v: View? = null
@@ -61,7 +62,7 @@ class HomeFragment : Fragment(), IOnPengajianItemClickListener, IOnJumatanItemCl
 
         //recycler kegiatan
         recyclerView = v?.findViewById(R.id.rv_kegiatan)
-        kegiatanAdapter = KegiatanAdapter(listKegiatan, context)
+        kegiatanAdapter = KegiatanAdapter(listKegiatan, context, this)
         recyclerView?.adapter = kegiatanAdapter
         recyclerView?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 
@@ -190,6 +191,15 @@ class HomeFragment : Fragment(), IOnPengajianItemClickListener, IOnJumatanItemCl
         intent.putExtra(JumatDetailActivity.JUMATAN_TANGGAL, item.tanggal)
         intent.putExtra(JumatDetailActivity.JUMATAN_JAM, item.jam)
         intent.putExtra(JumatDetailActivity.JUMATAN_ISI, item.isi_khutbah)
+        startActivity(intent)
+    }
+
+    override fun onKegiatanClickListener(kegiatan: Kegiatan, position: Int) {
+        val intent = Intent(context, KegiatanDetailActivity::class.java)
+        intent.putExtra(KegiatanDetailActivity.KEGIATAN_JUDUL, kegiatan.judul)
+        intent.putExtra(KegiatanDetailActivity.KEGIATAN_TANGGAL, kegiatan.tanggal)
+        intent.putExtra(KegiatanDetailActivity.KEGIATAN_JAM, kegiatan.jam)
+        intent.putExtra(KegiatanDetailActivity.KEGIATAN_ISI, kegiatan.isi)
         startActivity(intent)
     }
 

@@ -1,7 +1,8 @@
-package com.zackyasgar.at_tauba
+package com.zackyasgar.at_tauba.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.zackyasgar.at_tauba.R
 import kotlinx.android.synthetic.main.activity_pengajian_detail.*
 
 class PengajianDetailActivity : AppCompatActivity() {

@@ -76,5 +76,6 @@
     <string name="tgl">Tanggal</string>
     <string name="jm">Jam</string>
     <string name="detail_jumat">Detail Jumatan</string>
+    <string name="detail_kegiatan">Detail Kegiatan</string>
 
 </resources>

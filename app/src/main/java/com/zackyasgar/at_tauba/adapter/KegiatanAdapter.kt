@@ -11,8 +11,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.zackyasgar.at_tauba.R
 import com.zackyasgar.at_tauba.model.Kegiatan
+import com.zackyasgar.at_tauba.ui.home.HomeFragment
 
-class KegiatanAdapter(var kegiatan: List<Kegiatan>, var context: Context?): RecyclerView.Adapter<KegiatanAdapter.KegiatanHolder>() {
+class KegiatanAdapter(
+    var kegiatan: List<Kegiatan>,
+    var context: Context?,
+    var clickListener: IOnKegiatanItemClickListener
+): RecyclerView.Adapter<KegiatanAdapter.KegiatanHolder>() {
 
     var showShimmer = true
 
@@ -25,7 +30,7 @@ class KegiatanAdapter(var kegiatan: List<Kegiatan>, var context: Context?): Recy
         var images: ImageView = itemView.findViewById(R.id.img_kegiatan)
 
         @SuppressLint("UseCompatLoadingForDrawables")
-        fun bind(kegiatan: Kegiatan) {
+        fun bind(kegiatan: Kegiatan, action: IOnKegiatanItemClickListener) {
             judul.background = null
             tanggal.background = null
             jam.background = null
@@ -35,6 +40,10 @@ class KegiatanAdapter(var kegiatan: List<Kegiatan>, var context: Context?): Recy
             tanggal.text = kegiatan.tanggal
             jam.text = kegiatan.jam
             images.setImageDrawable(context?.getDrawable(R.drawable.kegiatan))
+
+            itemView.setOnClickListener{
+                action.onKegiatanClickListener(kegiatan, adapterPosition)
+            }
         }
     }
 
@@ -52,7 +61,7 @@ class KegiatanAdapter(var kegiatan: List<Kegiatan>, var context: Context?): Recy
             holder.shimmerFrameLayout.stopShimmer()
             holder.shimmerFrameLayout.setShimmer(null)
 
-            holder.bind(kegiatan[position])
+            holder.bind(kegiatan[position], clickListener)
         }
     }
 
@@ -61,4 +70,8 @@ class KegiatanAdapter(var kegiatan: List<Kegiatan>, var context: Context?): Recy
         return if(showShimmer) SHIMMER_ITEM_NUMBER else kegiatan.size
     }
 
+}
+
+interface IOnKegiatanItemClickListener {
+    fun onKegiatanClickListener(kegiatan: Kegiatan, position: Int)
 }
