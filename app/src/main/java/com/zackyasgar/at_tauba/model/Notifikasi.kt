@@ -1,6 +1,6 @@
 package com.zackyasgar.at_tauba.model
 
-data class NotifikasiData(
+data class Notifikasi(
     val title: String,
     val message: String
 

@@ -18,12 +18,13 @@ import com.zackyasgar.at_tauba.detail.PengajianDetailActivity
 import com.zackyasgar.at_tauba.R
 import com.zackyasgar.at_tauba.adapter.*
 import com.zackyasgar.at_tauba.detail.KegiatanDetailActivity
+import com.zackyasgar.at_tauba.detail.PengurusDetailActivity
 import com.zackyasgar.at_tauba.model.Jumat
 import com.zackyasgar.at_tauba.model.Kegiatan
 import com.zackyasgar.at_tauba.model.Pengajian
 import com.zackyasgar.at_tauba.model.Pengurus
 
-class HomeFragment : Fragment(), IOnPengajianItemClickListener, IOnJumatanItemClickListener, IOnKegiatanItemClickListener{
+class HomeFragment : Fragment(), IOnPengajianItemClickListener, IOnJumatanItemClickListener, IOnKegiatanItemClickListener, IOnPenurusItemClickListener{
 
     private var db = FirebaseFirestore.getInstance()
     var v: View? = null
@@ -44,8 +45,8 @@ class HomeFragment : Fragment(), IOnPengajianItemClickListener, IOnJumatanItemCl
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
-            savedInstanceState: Bundle?
-    ): View? {
+            savedInstanceState: Bundle?): View? {
+
         v = inflater.inflate(R.layout.fragment_home, container, false)
 
         // recycler pengajian
@@ -68,7 +69,7 @@ class HomeFragment : Fragment(), IOnPengajianItemClickListener, IOnJumatanItemCl
 
         //recycler pengurus
         recyclerView = v?.findViewById(R.id.rv_pengurus)
-        pengurusAdapter = PengurusAdapter(listPengurus, context)
+        pengurusAdapter = PengurusAdapter(listPengurus, context, this)
         recyclerView?.adapter = pengurusAdapter
         recyclerView?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 
@@ -200,6 +201,14 @@ class HomeFragment : Fragment(), IOnPengajianItemClickListener, IOnJumatanItemCl
         intent.putExtra(KegiatanDetailActivity.KEGIATAN_TANGGAL, kegiatan.tanggal)
         intent.putExtra(KegiatanDetailActivity.KEGIATAN_JAM, kegiatan.jam)
         intent.putExtra(KegiatanDetailActivity.KEGIATAN_ISI, kegiatan.isi)
+        startActivity(intent)
+    }
+
+    override fun onPengurusClickListener(item: Pengurus, position: Int) {
+        val intent = Intent(context, PengurusDetailActivity::class.java)
+        intent.putExtra(PengurusDetailActivity.PENGURUS_NAMA, item.nama)
+        intent.putExtra(PengurusDetailActivity.PENGURUS_JABATAN, item.jabatan)
+        intent.putExtra(PengurusDetailActivity.PENGURUS_UMUR, item.umur)
         startActivity(intent)
     }
 

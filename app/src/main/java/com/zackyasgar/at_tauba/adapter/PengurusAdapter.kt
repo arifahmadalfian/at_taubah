@@ -12,7 +12,9 @@ import com.facebook.shimmer.ShimmerFrameLayout
 import com.zackyasgar.at_tauba.R
 import com.zackyasgar.at_tauba.model.Pengurus
 
-class PengurusAdapter(var pengurus: List<Pengurus>, var context: Context?): RecyclerView.Adapter<PengurusAdapter.PengurusHolder>() {
+class PengurusAdapter(var pengurus: List<Pengurus>,
+                      var context: Context?,
+                      val clickListener: IOnPenurusItemClickListener): RecyclerView.Adapter<PengurusAdapter.PengurusHolder>() {
 
     var showShimmer = true
 
@@ -24,7 +26,7 @@ class PengurusAdapter(var pengurus: List<Pengurus>, var context: Context?): Recy
         var image: ImageView = itemView.findViewById(R.id.img_pengurus)
 
         @SuppressLint("UseCompatLoadingForDrawables")
-        fun bind(pengurus: Pengurus) {
+        fun bind(pengurus: Pengurus, action: IOnPenurusItemClickListener) {
             nama.background = null
             jabatan.background = null
             image.background = null
@@ -32,6 +34,10 @@ class PengurusAdapter(var pengurus: List<Pengurus>, var context: Context?): Recy
             nama.text = pengurus.nama
             jabatan.text = pengurus.jabatan
             image.setImageDrawable(context?.getDrawable(R.drawable.dkm))
+
+            itemView.setOnClickListener {
+                action.onPengurusClickListener(pengurus, adapterPosition)
+            }
         }
     }
 
@@ -49,7 +55,7 @@ class PengurusAdapter(var pengurus: List<Pengurus>, var context: Context?): Recy
             holder.shimmerFrameLayout.stopShimmer()
             holder.shimmerFrameLayout.setShimmer(null)
 
-            holder.bind(pengurus[position])
+            holder.bind(pengurus[position], clickListener)
         }
     }
 
@@ -58,4 +64,8 @@ class PengurusAdapter(var pengurus: List<Pengurus>, var context: Context?): Recy
         return if (showShimmer) SHIMMER_ITEM_NUMBER else pengurus.size
     }
 
+}
+
+interface IOnPenurusItemClickListener {
+        fun onPengurusClickListener(item: Pengurus, position: Int)
 }

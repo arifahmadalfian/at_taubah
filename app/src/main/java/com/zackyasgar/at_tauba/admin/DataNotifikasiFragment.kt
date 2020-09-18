@@ -14,7 +14,7 @@ import com.google.firebase.messaging.FirebaseMessaging
 import com.google.gson.Gson
 import com.zackyasgar.at_tauba.R
 import com.zackyasgar.at_tauba.RetrofitInstance
-import com.zackyasgar.at_tauba.model.NotifikasiData
+import com.zackyasgar.at_tauba.model.Notifikasi
 import com.zackyasgar.at_tauba.model.PushNotifikasi
 import kotlinx.android.synthetic.main.fragment_data_notifikasi.*
 import kotlinx.coroutines.CoroutineScope
@@ -135,7 +135,7 @@ class DataNotifikasiFragment : Fragment(), View.OnClickListener {
 
         //Untuk mengirim notifikasi ke aplikasi
         PushNotifikasi(
-            NotifikasiData(pTitle, pMessage),
+            Notifikasi(pTitle, pMessage),
             Companion.TOPIC
         ).also {
             sendNotifikasi(it)

@@ -14,7 +14,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.zackyasgar.at_tauba.R
 import com.zackyasgar.at_tauba.adapter.NotificationsAdapter
-import com.zackyasgar.at_tauba.model.NotifikasiData
+import com.zackyasgar.at_tauba.model.Notifikasi
 
 
 class NotificationsFragment : Fragment() {
@@ -23,7 +23,7 @@ class NotificationsFragment : Fragment() {
     var v: View? = null
     var recyclerView: RecyclerView? = null
     var notifAdapter: NotificationsAdapter? = null
-    var listNotif: MutableList<NotifikasiData> = ArrayList()
+    var listNotif: MutableList<Notifikasi> = ArrayList()
 
 
     override fun onCreateView(
@@ -61,7 +61,7 @@ class NotificationsFragment : Fragment() {
             .get()
             .addOnSuccessListener {
                 for (i in it) {
-                    listNotif.add(NotifikasiData(
+                    listNotif.add(Notifikasi(
                         "${i.data["title"]}",
                         "${i.data["message"]}"
                     ))

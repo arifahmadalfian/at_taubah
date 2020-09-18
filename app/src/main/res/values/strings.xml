@@ -77,5 +77,6 @@
     <string name="jm">Jam</string>
     <string name="detail_jumat">Detail Jumatan</string>
     <string name="detail_kegiatan">Detail Kegiatan</string>
+    <string name="detail_pengurus">Detail Pengurus</string>
 
 </resources>

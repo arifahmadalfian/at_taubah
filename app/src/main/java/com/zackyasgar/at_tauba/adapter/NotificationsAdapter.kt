@@ -11,9 +11,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.zackyasgar.at_tauba.R
 import com.zackyasgar.at_tauba.R.drawable.ic_notifications_black_24dp
-import com.zackyasgar.at_tauba.model.NotifikasiData
+import com.zackyasgar.at_tauba.model.Notifikasi
 
-class NotificationsAdapter(var notifications: List<NotifikasiData>,var context: Context?): RecyclerView.Adapter<NotificationsAdapter.NotificationsHolder>() {
+class NotificationsAdapter(var notifications: List<Notifikasi>, var context: Context?): RecyclerView.Adapter<NotificationsAdapter.NotificationsHolder>() {
 
     var showShimmer = true
 
@@ -25,7 +25,7 @@ class NotificationsAdapter(var notifications: List<NotifikasiData>,var context: 
         var images: ImageView = itemView.findViewById(R.id.img_notifications)
 
         @SuppressLint("UseCompatLoadingForDrawables")
-        fun bind(notifications: NotifikasiData) {
+        fun bind(notifications: Notifikasi) {
             title.background = null
             message.background = null
             images.background = null
