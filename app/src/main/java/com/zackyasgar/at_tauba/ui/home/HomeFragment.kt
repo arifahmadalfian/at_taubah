@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.zackyasgar.at_tauba.JumatanListActivity
+import com.zackyasgar.at_tauba.KegiatanListActivity
 import com.zackyasgar.at_tauba.PengajianListActivity
 import com.zackyasgar.at_tauba.detail.JumatDetailActivity
 import com.zackyasgar.at_tauba.detail.PengajianDetailActivity
@@ -88,6 +89,10 @@ class HomeFragment : Fragment(), IOnPengajianItemClickListener, IOnJumatanItemCl
         }
         tv_list_jumatan_click.setOnClickListener {
             val intent = Intent(context, JumatanListActivity::class.java)
+            startActivity(intent)
+        }
+        tv_list_kegiatan_click.setOnClickListener {
+            val intent = Intent(context, KegiatanListActivity::class.java)
             startActivity(intent)
         }
     }

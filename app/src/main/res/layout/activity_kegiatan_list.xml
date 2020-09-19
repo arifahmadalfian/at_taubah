@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
-    tools:context=".JumatanListActivity">
+    tools:context=".KegiatanListActivity">
 
     <TextView
-        android:id="@+id/tv_title_detail_jumatan_vertical"
+        android:id="@+id/tv_title_detail_kegiatan_vertical"
         style="@style/StyleText"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -16,7 +16,7 @@
         android:background="@drawable/bg_home_toolbar"
         android:gravity="center_vertical"
         android:paddingStart="16dp"
-        android:text="@string/juma_at"
+        android:text="@string/kegiatan"
         android:textColor="@color/colorWhite"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/scroolView"
@@ -32,14 +32,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title_detail_jumatan_vertical">
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_detail_kegiatan_vertical">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_jumatan_vertical"
+            android:id="@+id/rv_kegiatan_vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            tools:listitem="@layout/items_row_jumatan_vertical" />
+            tools:listitem="@layout/items_row_kegiatan_vertical" />
 
     </androidx.core.widget.NestedScrollView>
 

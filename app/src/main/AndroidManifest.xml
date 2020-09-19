@@ -14,8 +14,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".JumatanListActivity"
+        <activity android:name=".KegiatanListActivity"
             android:theme="@style/AppTheme.Admin"/>
+        <activity
+            android:name=".JumatanListActivity"
+            android:theme="@style/AppTheme.Admin" />
         <activity
             android:name=".PengajianListActivity"
             android:theme="@style/AppTheme.Admin" />
