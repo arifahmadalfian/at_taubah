@@ -14,11 +14,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PengajianListActivity"></activity>
-        <activity android:name=".detail.PengurusDetailActivity" />
-        <activity android:name=".detail.KegiatanDetailActivity" />
-        <activity android:name=".detail.JumatDetailActivity" />
-        <activity android:name=".detail.PengajianDetailActivity" />
+        <activity android:name=".JumatanListActivity"
+            android:theme="@style/AppTheme.Admin"/>
+        <activity
+            android:name=".PengajianListActivity"
+            android:theme="@style/AppTheme.Admin" />
+        <activity
+            android:name=".detail.PengurusDetailActivity"
+            android:theme="@style/AppTheme.Admin" />
+        <activity
+            android:name=".detail.KegiatanDetailActivity"
+            android:theme="@style/AppTheme.Admin" />
+        <activity
+            android:name=".detail.JumatDetailActivity"
+            android:theme="@style/AppTheme.Admin" />
+        <activity
+            android:name=".detail.PengajianDetailActivity"
+            android:theme="@style/AppTheme.Admin" />
         <activity
             android:name=".LoginActivity"
             android:theme="@style/AppTheme.Admin" />
