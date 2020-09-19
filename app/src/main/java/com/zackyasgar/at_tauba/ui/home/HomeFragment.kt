@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import com.zackyasgar.at_tauba.PengajianListActivity
 import com.zackyasgar.at_tauba.detail.JumatDetailActivity
 import com.zackyasgar.at_tauba.detail.PengajianDetailActivity
 import com.zackyasgar.at_tauba.R
@@ -23,6 +24,7 @@ import com.zackyasgar.at_tauba.model.Jumat
 import com.zackyasgar.at_tauba.model.Kegiatan
 import com.zackyasgar.at_tauba.model.Pengajian
 import com.zackyasgar.at_tauba.model.Pengurus
+import kotlinx.android.synthetic.main.layout_home.*
 
 class HomeFragment : Fragment(), IOnPengajianItemClickListener, IOnJumatanItemClickListener, IOnKegiatanItemClickListener, IOnPenurusItemClickListener{
 
@@ -74,6 +76,15 @@ class HomeFragment : Fragment(), IOnPengajianItemClickListener, IOnJumatanItemCl
         recyclerView?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 
         return v
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        tv_list_pengajian_click.setOnClickListener {
+            val intent = Intent(context, PengajianListActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
