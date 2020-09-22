@@ -16,6 +16,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:orientation="vertical">
+
+       <TextView
+           android:id="@+id/tanggal_home"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           style="@style/StyleText"
+           android:textStyle="bold"
+           android:textSize="30sp"
+           android:textColor="@color/colorWhite"
+           android:layout_marginStart="16dp"
+           android:layout_marginTop="80dp"
+           android:paddingTop="50dp"/>
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -60,6 +72,7 @@
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:text="@string/_00_00"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/img_ashar"
             app:layout_constraintEnd_toStartOf="@id/tv_waktu_subuh"
             app:layout_constraintStart_toStartOf="parent"
@@ -94,6 +107,7 @@
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:text="@string/_00_00"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/img_magrib"
             app:layout_constraintEnd_toStartOf="@id/tv_waktu_dzuhur"
             app:layout_constraintStart_toEndOf="@id/tv_waktu_imsak"
@@ -128,6 +142,7 @@
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:text="@string/_00_00"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/img_isya"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/tv_waktu_subuh"
@@ -163,6 +178,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:text="@string/_00_00"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/tv_waktu_magrib"
             app:layout_constraintStart_toStartOf="parent"
@@ -198,6 +214,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:text="@string/_00_00"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/tv_waktu_isya"
             app:layout_constraintStart_toEndOf="@id/tv_waktu_ashar"
@@ -233,6 +250,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:text="@string/_00_00"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/tv_waktu_magrib"

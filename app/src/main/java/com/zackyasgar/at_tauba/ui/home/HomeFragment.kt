@@ -1,5 +1,6 @@
 package com.zackyasgar.at_tauba.ui.home
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -13,6 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import com.loopj.android.http.AsyncHttpClient
+import com.loopj.android.http.AsyncHttpResponseHandler
 import com.zackyasgar.at_tauba.JumatanListActivity
 import com.zackyasgar.at_tauba.KegiatanListActivity
 import com.zackyasgar.at_tauba.PengajianListActivity
@@ -26,7 +29,13 @@ import com.zackyasgar.at_tauba.model.Jumat
 import com.zackyasgar.at_tauba.model.Kegiatan
 import com.zackyasgar.at_tauba.model.Pengajian
 import com.zackyasgar.at_tauba.model.Pengurus
+import cz.msebera.android.httpclient.Header
 import kotlinx.android.synthetic.main.layout_home.*
+import org.json.JSONArray
+import org.json.JSONObject
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class HomeFragment : Fragment(), IOnPengajianItemClickListener, IOnJumatanItemClickListener, IOnKegiatanItemClickListener, IOnPenurusItemClickListener{
 
@@ -100,12 +109,76 @@ class HomeFragment : Fragment(), IOnPengajianItemClickListener, IOnJumatanItemCl
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        /*
+           untuk menentukan kota dari api yang di ambil
+           https://api.banghasan.com/sholat/format/json/jadwal/kota/679/tanggal/2020-09-22
+           id 679 adalah id dari kota bandung pada api tersebut
+            */
+        loadKota("679")
+
         Handler().postDelayed({
             getPengajian()
             getJumatan()
             getKegiatan()
             getPengurus()
         }, 2000)
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    private fun loadKota(kota: String) {
+
+        val current = SimpleDateFormat("yyyy-MM-dd")
+        val tanggal = current.format(Date())
+
+        val client = AsyncHttpClient()
+        val url = "https://api.banghasan.com/sholat/format/json/jadwal/kota/$kota/tanggal/$tanggal"
+        client.get(url, object: AsyncHttpResponseHandler(){
+            override fun onSuccess(
+                statusCode: Int,
+                headers: Array<out Header>?,
+                responseBody: ByteArray
+            ) {
+                val result = String(responseBody)
+
+                Log.d("JadwalData", result)
+                try {
+                    val jsonObj = JSONObject(result)
+                    val objJadwal = jsonObj.getJSONObject("jadwal")
+                    val objData = objJadwal.getJSONObject("data")
+
+                    tanggal_home.text = objData.getString("tanggal")
+                    tv_waktu_imsak.text = objData.getString("imsak")
+                    tv_waktu_subuh.text = objData.getString("subuh")
+                    tv_waktu_dzuhur.text = objData.getString("dzuhur")
+                    tv_waktu_ashar.text = objData.getString("ashar")
+                    tv_waktu_magrib.text = objData.getString("maghrib")
+                    tv_waktu_isya.text = objData.getString("isya")
+
+                    Log.d("dataJadwal", objData.toString())
+
+                } catch (e: Exception) {
+                    Toast.makeText(context, e.message, Toast.LENGTH_SHORT).show()
+                    e.printStackTrace()
+                }
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<out Header>?,
+                responseBody: ByteArray?,
+                error: Throwable
+            ) {
+                //Jika koneksi gagal
+                val errorMessage = when (statusCode) {
+                    401 -> "$statusCode: Bad Request"
+                    403 -> "$statusCode: Forbidden"
+                    404 -> "$statusCode: Not Found"
+                    else -> "$statusCode: ${error.message}"
+                }
+                Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
+            }
+
+        })
     }
 
     private fun getPengurus() {
